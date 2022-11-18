@@ -1,0 +1,51 @@
+name: Python application
+
+on: [pull_request]
+
+jobs:
+  build:
+    name: tests-pass
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python 3.7
+      uses: actions/setup-python@v1
+      with:
+        python-version: 3.7
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+    - name: Test with pytest
+      run: |
+        coverage run -m pytest tests
+        coverage xml -o coverage/python.xml
+    - name: Report python coverage
+      uses: orgoro/coverage@v3
+      with:
+        coverageFile: coverage/python.xml
+        token: ${{ secrets.GITHUB_TOKEN }}
+    # The next few steps only apply if you have javascript tests
+    # - name: Setup node
+    #   uses: actions/setup-node@v3
+    #   with:
+    #     node-version: '18'
+    # - name: Test with jest
+    #   run: |
+    #     npm install
+    #     npm test -- --coverage --coverageReporters="json-summary" --coverageReporters="text" | tee ./coverage.txt
+    # - name: Report javascript coverage
+    #   uses: MishaKav/jest-coverage-comment@v1.0.20
+    #   with:
+    #     title: "JavaScript Coverage"
+    #     summary-title: "Summary"
+    #     coverage-title: "Modified Files"
+    #     github-token: ${{ secrets.GITHUB_TOKEN }}
+    #     report-only-changed-files: true
+    #     coverage-path: ./JS-FOLDER-NAME/coverage.txt
+    #     coverage-summary-path: ./JS-FOLDER-NAME/coverage/coverage-summary.json
+    #     coverage-path-prefix: JS-FOLDER-NAME/src/
+    - name: Run linting
+      run: |
+        pre-commit run --all-files
