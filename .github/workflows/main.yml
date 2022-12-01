@@ -26,26 +26,6 @@ jobs:
       with:
         coverageFile: coverage/python.xml
         token: ${{ secrets.GITHUB_TOKEN }}
-    # The next few steps only apply if you have javascript tests
-    # - name: Setup node
-    #   uses: actions/setup-node@v3
-    #   with:
-    #     node-version: '18'
-    # - name: Test with jest
-    #   run: |
-    #     npm install
-    #     npm test -- --coverage --coverageReporters="json-summary" --coverageReporters="text" | tee ./coverage.txt
-    # - name: Report javascript coverage
-    #   uses: MishaKav/jest-coverage-comment@v1.0.20
-    #   with:
-    #     title: "JavaScript Coverage"
-    #     summary-title: "Summary"
-    #     coverage-title: "Modified Files"
-    #     github-token: ${{ secrets.GITHUB_TOKEN }}
-    #     report-only-changed-files: true
-    #     coverage-path: ./JS-FOLDER-NAME/coverage.txt
-    #     coverage-summary-path: ./JS-FOLDER-NAME/coverage/coverage-summary.json
-    #     coverage-path-prefix: JS-FOLDER-NAME/src/
     - name: Run linting
       run: |
         pre-commit run --all-files
