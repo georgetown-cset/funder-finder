@@ -1,6 +1,7 @@
 import argparse
-import bs4
 import logging
+
+import bs4
 import requests
 
 """
@@ -35,14 +36,18 @@ def get_funding_sources(repo: str) -> list:
         logging.warning(f"No sponsors found for {repo}")
         return []
     if len(sponsor_elems) > 1:
-        logging.warning(f"Multiple elements found for {repo} with text 'Sponsor this project'")
+        logging.warning(
+            f"Multiple elements found for {repo} with text 'Sponsor this project'"
+        )
     sponsor_links = sponsor_elems[0].parent.parent.find_all("a", href=True)
     return [clean_link(repo, link) for link in sponsor_links]
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("repo", help="GitHub repo owner and name in the format 'owner/name'")
+    parser.add_argument(
+        "repo", help="GitHub repo owner and name in the format 'owner/name'"
+    )
     args = parser.parse_args()
 
     sources = get_funding_sources(args.repo)
