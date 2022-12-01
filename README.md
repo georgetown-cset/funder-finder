@@ -3,9 +3,11 @@
 This project allows you to retrieve funding information for a GitHub repository of interest to you. Current
 funding sources we support include:
 
-- tk
+- [Open Collective](funderfinder/sources/opencollective.py)
 
-See our issue list for future funding sources. We welcome your contributions!
+We also have some general-purpose [utilities](funderfinder/utils).
+
+See our issue list for funding sources we plan to retrieve in the future. We welcome your contributions!
 
 ## How to contribute
 
