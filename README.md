@@ -18,4 +18,4 @@ pip install -r requirements.txt
 pre-commit install
 ```
 
-You can run the unit tests by running `python3 -m pytest tests` from the root of the project directory.
+You can run the unit tests by running `pytest` from the root of the project directory.
