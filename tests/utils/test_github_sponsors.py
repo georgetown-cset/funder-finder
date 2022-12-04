@@ -1,6 +1,5 @@
 import json
 import unittest
-
 from urllib.error import HTTPError
 
 import funderfinder.sources.github_sponsors as gs
