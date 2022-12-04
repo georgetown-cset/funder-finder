@@ -18,6 +18,11 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
     - name: Test with pytest
+      with:
+        # This token is provided by Actions,
+        # you do not need to create your own token
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        fail_on_error: true
       run: |
         coverage run -m pytest tests
         coverage xml -o coverage/python.xml
