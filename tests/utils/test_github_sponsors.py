@@ -1,6 +1,8 @@
 import json
 import unittest
 
+from urllib.error import HTTPError
+
 import funderfinder.sources.github_sponsors as gs
 
 
@@ -23,8 +25,8 @@ class TestGithubSponsors(unittest.TestCase):
         result = gs.get_gh_org_funding_json("georgetown-cset")
         try:
             json.json_loads(result)
-        except:
-            return False
+        except HTTPError:
+            raise
 
     def test_parse_gh_org_funding_json(self):
         example_json = """
