@@ -50,7 +50,7 @@ def get_gh_org_funding_json(org: str) -> Any:
 
 def parse_gh_org_funding_json(gh_org_funding_json: Any) -> dict:
     """
-    Retrives GitHub sponsors statistics for a GitHub organization. See:
+    Retrives GitHub sponsors statistics for a GitHub organization.
     :param org: identifier for the GitHub organization
     :return: Dict of funding stats
     """
