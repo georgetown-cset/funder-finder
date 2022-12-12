@@ -7,14 +7,24 @@ import funderfinder.sources.github_sponsors as gs
 
 class TestGithubSponsors(unittest.TestCase):
     def test_get_org_from_github_url(self):
-        expected_org = "tensorflow"
         self.assertEqual(
-            expected_org,
+            "tensorflow",
             gs.get_org_from_github_url("https://github.com/tensorflow/tensorflow"),
         )
-        expected_org = "tensorflow"
         self.assertEqual(
             "georgetown-cset",
+            gs.get_org_from_github_url(
+                "https://github.com/georgetown-cset/funder-finder"
+            ),
+        )
+
+    def get_org_and_owner_from_github_url(self):
+        self.assertEqual(
+            "tensorflow/tensorflow",
+            gs.get_org_from_github_url("https://github.com/tensorflow/tensorflow"),
+        )
+        self.assertEqual(
+            "georgetown-cset/funder-finder",
             gs.get_org_from_github_url(
                 "https://github.com/georgetown-cset/funder-finder"
             ),
@@ -41,3 +51,14 @@ class TestGithubSponsors(unittest.TestCase):
         self.assertEqual(
             expected_dict, gs.parse_gh_org_funding_json(json.loads(example_json))
         )
+
+    def test_get_gh_top_contributors_json(self):
+        # note: this could change one day! if so, will be
+        # a happy thing :)
+        usernames_in_top_contribs = ["jmelot", "jspeed-meyers"]
+        got = gs.get_gh_top_contributors_json("georgetown-cset/funder-finder")
+        for username in usernames_in_top_contribs:
+            self.assertEqual(username in got, True)
+
+    def test_get_gh_user_gh_sponsors(self):
+        gs.get_gh_user_gh_sponsors("ljharb")
