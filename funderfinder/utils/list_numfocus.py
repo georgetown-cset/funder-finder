@@ -3,6 +3,7 @@ import json
 import logging
 import os
 import re
+import time
 
 import bs4
 import requests
@@ -20,9 +21,9 @@ Sponsored and Affiliated projects, but we can add this later.
 For now, for each project we are recording three pieces of information:
 
   * id - this is the name of the project
+  * slug - for numfocus sponsored pages, this is the numfocus detail page slug (e.g. "nibabel" for "https://numfocus.org/project/nibabel")
   * github_id - this is the owner/repo string of any GitHub repo we were able to associate with the project
   * relationship - this is "sponsored" for sponsored projects, and "affiliated" for affiliated projects
-  # TODO: separate id and name
 """
 
 HEADERS = {
@@ -81,10 +82,13 @@ def get_sponsored_projects() -> list:
         projects.append(
             {
                 "id": name,
+                "slug": link.strip().strip("/").split("/")[-1],
                 "github_id": github_ref,
                 "relationship": "sponsored",
             }
         )
+        # don't make requests any faster than every 2 seconds
+        time.sleep(2)
     return projects
 
 
@@ -116,6 +120,7 @@ def get_affiliated_projects() -> list:
         projects.append(
             {
                 "id": name,
+                "slug": None,
                 "github_id": github_ref,
                 "relationship": "affiliated",
             }
@@ -123,7 +128,12 @@ def get_affiliated_projects() -> list:
     return projects
 
 
-def get_funding_stats(output_file: str) -> None:
+def get_projects(output_file: str) -> None:
+    """
+    Get numfocus affiliated and sponsored projects, along with some basic metadata
+    :param output_file: File where jsonl of project metadata should be written
+    :return: None
+    """
     with open(output_file, mode="w") as f:
         sponsored_projects = get_sponsored_projects()
         for project in sponsored_projects:
@@ -140,4 +150,4 @@ if __name__ == "__main__":
     )
     args = parser.parse_args()
 
-    get_funding_stats(args.output_file)
+    get_projects(args.output_file)
