@@ -21,6 +21,11 @@ def get_funding_stats(args: dict) -> dict:
             meta = json.loads(line.strip())
             for key in args:
                 is_affiliated |= (meta[key] is not None) and (meta[key] == args[key])
+            # In some cases the Numfocus affiliation is at the GitHub organization level rather than at the repo
+            # level. So also allow match on repo owner
+            if args[key]:
+                owner = args[key].split("/")[0]
+                is_affiliated |= (meta[key] is not None) and (meta[key] == owner)
     return {
         "num_contributors": None,
         "amount_received_usd": None,
