@@ -1,67 +1,66 @@
-{"name": "NumPy", "slug": "numpy", "github_name": "numpy/numpy", "relationship": "sponsored"}
-{"name": "Matplotlib", "slug": "matplotlib", "github_name": "matplotlib/matplotlib", "relationship": "sponsored"}
-{"name": "pandas", "slug": "pandas", "github_name": "pandas-dev/pandas", "relationship": "sponsored"}
-{"name": "Project Jupyter", "slug": "project-jupyter", "github_name": "jupyter", "relationship": "sponsored"}
-{"name": "IPython", "slug": "ipython", "github_name": "ipython/ipython", "relationship": "sponsored"}
-{"name": "SciPy", "slug": "scipy", "github_name": "scipy/scipy", "relationship": "sponsored"}
-{"name": "nteract", "slug": "nteract", "github_name": "nteract/nteract", "relationship": "sponsored"}
-{"name": "Stan", "slug": "stan", "github_name": "stan-dev", "relationship": "sponsored"}
-{"name": "PyMC", "slug": "pymc", "github_name": "pymc-devs/pymc", "relationship": "sponsored"}
-{"name": "Julia", "slug": "julia", "github_name": "JuliaLang/julia", "relationship": "sponsored"}
-{"name": "JuMP", "slug": "jump", "github_name": "JuliaOpt/JuMP.jl", "relationship": "sponsored"}
-{"name": "PyTables", "slug": "pytables", "github_name": "PyTables/PyTables", "relationship": "sponsored"}
-{"name": "Shogun", "slug": "shogun", "github_name": "shogun-toolbox/shogun", "relationship": "sponsored"}
-{"name": "SymPy", "slug": "sympy", "github_name": "sympy/sympy", "relationship": "sponsored"}
-{"name": "FEniCS Project", "slug": "fenics-project", "github_name": "FEniCS/web", "relationship": "sponsored"}
-{"name": "yt", "slug": "yt", "github_name": "yt-project/yt", "relationship": "sponsored"}
-{"name": "Econ-ARK", "slug": "econ-ark", "github_name": "econ-ark/HARK", "relationship": "sponsored"}
-{"name": "Astropy", "slug": "astropy", "github_name": "astropy/astropy", "relationship": "sponsored"}
-{"name": "SunPy", "slug": "sunpy", "github_name": null, "relationship": "sponsored"}
-{"name": "QuantEcon", "slug": "quantecon", "github_name": "QuantEcon/QuantEcon.py", "relationship": "sponsored"}
-{"name": "rOpenSci", "slug": "ropensci", "github_name": "ropensci/software-review", "relationship": "sponsored"}
-{"name": "Open Journals", "slug": "open-journals", "github_name": "openjournals/governance", "relationship": "sponsored"}
-{"name": "Cantera", "slug": "cantera", "github_name": "Cantera/cantera", "relationship": "sponsored"}
-{"name": "Bokeh", "slug": "bokeh", "github_name": "bokeh/bokeh", "relationship": "sponsored"}
-{"name": "conda-forge", "slug": "conda-forge", "github_name": "conda-forge/miniforge", "relationship": "sponsored"}
-{"name": "xarray", "slug": "xarray", "github_name": "pydata/xarray", "relationship": "sponsored"}
-{"name": "Blosc", "slug": "blosc", "github_name": "Blosc/hdf5-blosc", "relationship": "sponsored"}
-{"name": "MathJax", "slug": "mathjax", "github_name": "mathjax/MathJax", "relationship": "sponsored"}
-{"name": "Dask", "slug": "dask", "github_name": "dask/dask", "relationship": "sponsored"}
-{"name": "mlpack", "slug": "mlpack", "github_name": "mlpack/mlpack", "relationship": "sponsored"}
-{"name": "Zarr", "slug": "zarr", "github_name": "zarr-developers/zarr-python", "relationship": "sponsored"}
-{"name": "MDAnalysis", "slug": "mdanalysis", "github_name": "bryanbraun/anchorjs", "relationship": "sponsored"}
-{"name": "scikit-image", "slug": "scikit-image", "github_name": "scikit-image/scikit-image", "relationship": "sponsored"}
-{"name": "ITK", "slug": "itk", "github_name": "InsightSoftwareConsortium/ITK", "relationship": "sponsored"}
-{"name": "OpenFHE", "slug": "openfhe", "github_name": "openfheorg/openfhe-development", "relationship": "sponsored"}
-{"name": "OpenMBEE", "slug": "openmbee", "github_name": "Open-MBEE", "relationship": "sponsored"}
-{"name": "scikit-learn", "slug": "scikit-learn", "github_name": "scikit-learn/scikit-learn", "relationship": "sponsored"}
-{"name": "SciML", "slug": "sciml", "github_name": "SciML/DiffEqFlux.jl", "relationship": "sponsored"}
-{"name": "TARDIS", "slug": "tardis", "github_name": "rtfd/sphinx_rtd_theme", "relationship": "sponsored"}
 {"name": "ArviZ", "slug": "arviz", "github_name": "arviz-devs/arviz", "relationship": "sponsored"}
-{"name": "LFortran", "slug": "lfortran", "github_name": "lfortran/lfortran", "relationship": "sponsored"}
-{"name": "NetworkX", "slug": "networkx", "github_name": "networkx/networkx", "relationship": "sponsored"}
-{"name": "GDAL", "slug": "gdal", "github_name": "OSGeo/gdal", "relationship": "sponsored"}
-{"name": "sgkit", "slug": "sgkit", "github_name": "pystatgen/sgkit", "relationship": "sponsored"}
-{"name": "NiBabel", "slug": "nibabel", "github_name": "nipy/nibabel", "relationship": "sponsored"}
-{"name": "napari", "slug": "napari", "github_name": "napari/napari", "relationship": "sponsored"}
-{"name": "Scientific Python", "slug": "scientific-python", "github_name": "scientific-python", "relationship": "sponsored"}
+{"name": "Astropy", "slug": "astropy", "github_name": "astropy/astropy", "relationship": "sponsored"}
+{"name": "Bioconductor", "slug": "bioconductor", "github_name": "bioconductor", "relationship": "sponsored"}
+{"name": "Blosc", "slug": "blosc", "github_name": "Blosc/hdf5-blosc", "relationship": "sponsored"}
+{"name": "Bokeh", "slug": "bokeh", "github_name": "bokeh/bokeh", "relationship": "sponsored"}
+{"name": "Cantera", "slug": "cantera", "github_name": "Cantera/cantera", "relationship": "sponsored"}
 {"name": "Conda", "slug": "conda", "github_name": "conda", "relationship": "sponsored"}
 {"name": "CuPy", "slug": "cupy", "github_name": "cupy/cupy", "relationship": "sponsored"}
+{"name": "Dask", "slug": "dask", "github_name": "dask/dask", "relationship": "sponsored"}
+{"name": "Econ-ARK", "slug": "econ-ark", "github_name": "econ-ark/HARK", "relationship": "sponsored"}
+{"name": "FEniCS Project", "slug": "fenics-project", "github_name": "FEniCS/web", "relationship": "sponsored"}
+{"name": "GDAL", "slug": "gdal", "github_name": "OSGeo/gdal", "relationship": "sponsored"}
 {"name": "GNU Octave", "slug": "gnu-octave", "github_name": "gnu-octave", "relationship": "sponsored"}
 {"name": "Galaxy", "slug": "galaxy", "github_name": "galaxyproject/galaxy", "relationship": "sponsored"}
-{"name": "Bioconductor", "slug": "bioconductor", "github_name": "bioconductor", "relationship": "sponsored"}
+{"name": "IPython", "slug": "ipython", "github_name": "ipython/ipython", "relationship": "sponsored"}
+{"name": "ITK", "slug": "itk", "github_name": "InsightSoftwareConsortium/ITK", "relationship": "sponsored"}
+{"name": "JuMP", "slug": "jump", "github_name": "JuliaOpt/JuMP.jl", "relationship": "sponsored"}
+{"name": "Julia", "slug": "julia", "github_name": "JuliaLang/julia", "relationship": "sponsored"}
+{"name": "LFortran", "slug": "lfortran", "github_name": "lfortran/lfortran", "relationship": "sponsored"}
+{"name": "MDAnalysis", "slug": "mdanalysis", "github_name": "bryanbraun/anchorjs", "relationship": "sponsored"}
+{"name": "MathJax", "slug": "mathjax", "github_name": "mathjax/MathJax", "relationship": "sponsored"}
+{"name": "Matplotlib", "slug": "matplotlib", "github_name": "matplotlib/matplotlib", "relationship": "sponsored"}
+{"name": "NetworkX", "slug": "networkx", "github_name": "networkx/networkx", "relationship": "sponsored"}
+{"name": "NiBabel", "slug": "nibabel", "github_name": "nipy/nibabel", "relationship": "sponsored"}
+{"name": "NumPy", "slug": "numpy", "github_name": "numpy/numpy", "relationship": "sponsored"}
+{"name": "Open Journals", "slug": "open-journals", "github_name": "openjournals/governance", "relationship": "sponsored"}
+{"name": "OpenFHE", "slug": "openfhe", "github_name": "openfheorg/openfhe-development", "relationship": "sponsored"}
+{"name": "OpenMBEE", "slug": "openmbee", "github_name": "Open-MBEE", "relationship": "sponsored"}
+{"name": "Project Jupyter", "slug": "project-jupyter", "github_name": "jupyter", "relationship": "sponsored"}
 {"name": "PyBaMM", "slug": "pybamm", "github_name": "pybamm-team/PyBaMM", "relationship": "sponsored"}
-{"name": "WorldWide Telescope", "slug": "worldwide-telescope", "github_name": "WorldWideTelescope/wwt-webgl-engine", "relationship": "sponsored"}
+{"name": "PyMC", "slug": "pymc", "github_name": "pymc-devs/pymc", "relationship": "sponsored"}
+{"name": "PyTables", "slug": "pytables", "github_name": "PyTables/PyTables", "relationship": "sponsored"}
+{"name": "QuantEcon", "slug": "quantecon", "github_name": "QuantEcon/QuantEcon.py", "relationship": "sponsored"}
+{"name": "SciML", "slug": "sciml", "github_name": "SciML/DiffEqFlux.jl", "relationship": "sponsored"}
+{"name": "SciPy", "slug": "scipy", "github_name": "scipy/scipy", "relationship": "sponsored"}
+{"name": "Scientific Python", "slug": "scientific-python", "github_name": "scientific-python", "relationship": "sponsored"}
+{"name": "Shogun", "slug": "shogun", "github_name": "shogun-toolbox/shogun", "relationship": "sponsored"}
 {"name": "Spyder", "slug": "spyder", "github_name": "spyder-ide/spyder", "relationship": "sponsored"}
+{"name": "Stan", "slug": "stan", "github_name": "stan-dev", "relationship": "sponsored"}
+{"name": "SunPy", "slug": "sunpy", "github_name": null, "relationship": "sponsored"}
+{"name": "SymPy", "slug": "sympy", "github_name": "sympy/sympy", "relationship": "sponsored"}
+{"name": "TARDIS", "slug": "tardis", "github_name": "rtfd/sphinx_rtd_theme", "relationship": "sponsored"}
+{"name": "WorldWide Telescope", "slug": "worldwide-telescope", "github_name": "WorldWideTelescope/wwt-webgl-engine", "relationship": "sponsored"}
+{"name": "Zarr", "slug": "zarr", "github_name": "zarr-developers/zarr-python", "relationship": "sponsored"}
+{"name": "conda-forge", "slug": "conda-forge", "github_name": "conda-forge/miniforge", "relationship": "sponsored"}
+{"name": "mlpack", "slug": "mlpack", "github_name": "mlpack/mlpack", "relationship": "sponsored"}
+{"name": "napari", "slug": "napari", "github_name": "napari/napari", "relationship": "sponsored"}
+{"name": "nteract", "slug": "nteract", "github_name": "nteract/nteract", "relationship": "sponsored"}
+{"name": "pandas", "slug": "pandas", "github_name": "pandas-dev/pandas", "relationship": "sponsored"}
+{"name": "rOpenSci", "slug": "ropensci", "github_name": "ropensci/software-review", "relationship": "sponsored"}
+{"name": "scikit-image", "slug": "scikit-image", "github_name": "scikit-image/scikit-image", "relationship": "sponsored"}
+{"name": "scikit-learn", "slug": "scikit-learn", "github_name": "scikit-learn/scikit-learn", "relationship": "sponsored"}
+{"name": "sgkit", "slug": "sgkit", "github_name": "pystatgen/sgkit", "relationship": "sponsored"}
+{"name": "xarray", "slug": "xarray", "github_name": "pydata/xarray", "relationship": "sponsored"}
+{"name": "yt", "slug": "yt", "github_name": "yt-project/yt", "relationship": "sponsored"}
 {"name": "Aesara", "slug": null, "github_name": "aesara-devs/aesara", "relationship": "affiliated"}
 {"name": "AiiDA", "slug": null, "github_name": "aiidateam/aiida-core", "relationship": "affiliated"}
 {"name": "Asteroid", "slug": null, "github_name": "asteroid-team/asteroid", "relationship": "affiliated"}
-{"name": "bqplot", "slug": null, "github_name": "bqplot/bqplot", "relationship": "affiliated"}
 {"name": "CB-Geo MPM", "slug": null, "github_name": "cb-geo/mpm", "relationship": "affiliated"}
+{"name": "CVXPY", "slug": null, "github_name": "cvxgrp/scs", "relationship": "affiliated"}
 {"name": "Catalyst", "slug": null, "github_name": "catalyst-team/catalyst", "relationship": "affiliated"}
 {"name": "Clawpack", "slug": null, "github_name": "clawpack", "relationship": "affiliated"}
 {"name": "Colour", "slug": null, "github_name": "colour-science/colour", "relationship": "affiliated"}
-{"name": "CVXPY", "slug": null, "github_name": "cvxgrp/scs", "relationship": "affiliated"}
 {"name": "Cython", "slug": null, "github_name": "cython/cython", "relationship": "affiliated"}
 {"name": "Dash", "slug": null, "github_name": "plotly/dash", "relationship": "affiliated"}
 {"name": "Data Retriever", "slug": null, "github_name": "weecology/retriever", "relationship": "affiliated"}
@@ -69,41 +68,46 @@
 {"name": "DyND", "slug": null, "github_name": "libdynd/libdynd", "relationship": "affiliated"}
 {"name": "Effective Quadratures", "slug": null, "github_name": "equadratures/equadratures", "relationship": "affiliated"}
 {"name": "FluxML", "slug": null, "github_name": "FluxML/Flux.jl", "relationship": "affiliated"}
+{"name": "GNU Radio", "slug": null, "github_name": "gnuradio/gnuradio", "relationship": "affiliated"}
 {"name": "Gensim", "slug": null, "github_name": "RaRe-Technologies/gensim", "relationship": "affiliated"}
+{"name": "GeoPandas", "slug": null, "github_name": "geopandas/geopandas", "relationship": "affiliated"}
 {"name": "GeomScale", "slug": null, "github_name": "GeomScale", "relationship": "affiliated"}
 {"name": "GeomStats", "slug": null, "github_name": null, "relationship": "affiliated"}
-{"name": "GeoPandas", "slug": null, "github_name": "geopandas/geopandas", "relationship": "affiliated"}
-{"name": "GNU Radio", "slug": null, "github_name": "gnuradio/gnuradio", "relationship": "affiliated"}
 {"name": "Gonum", "slug": null, "github_name": "gonum/gonum", "relationship": "affiliated"}
 {"name": "Gridap", "slug": null, "github_name": "gridap/Gridap.jl", "relationship": "affiliated"}
+{"name": "MFEM", "slug": null, "github_name": "mfem/mfem", "relationship": "affiliated"}
 {"name": "Manim", "slug": null, "github_name": "manimCommunity/manim", "relationship": "affiliated"}
 {"name": "Mesa: Agent-Based Modeling In Python", "slug": null, "github_name": "projectmesa/mesa", "relationship": "affiliated"}
-{"name": "MFEM", "slug": null, "github_name": "mfem/mfem", "relationship": "affiliated"}
+{"name": "NetKet", "slug": null, "github_name": "netket/netket", "relationship": "affiliated"}
 {"name": "Numba", "slug": null, "github_name": "numba/numba", "relationship": "affiliated"}
 {"name": "ObsPy", "slug": null, "github_name": "obspy/obspy", "relationship": "affiliated"}
-{"name": "Project Optuna", "slug": null, "github_name": "optuna/optuna", "relationship": "affiliated"}
 {"name": "Orange", "slug": null, "github_name": "biolab/orange3", "relationship": "affiliated"}
-{"name": "poliastro", "slug": null, "github_name": "poliastro/poliastro", "relationship": "affiliated"}
-{"name": "pomegranate", "slug": null, "github_name": "jmschrei/pomegranate", "relationship": "affiliated"}
 {"name": "PSL", "slug": null, "github_name": "PSLmodels", "relationship": "affiliated"}
-{"name": "pvlib", "slug": null, "github_name": "pvlib/pvlib-python", "relationship": "affiliated"}
+{"name": "Project Optuna", "slug": null, "github_name": "optuna/optuna", "relationship": "affiliated"}
 {"name": "PyLops", "slug": null, "github_name": "PyLops/pylops", "relationship": "affiliated"}
-{"name": "pyiron", "slug": null, "github_name": "pyiron/pyiron", "relationship": "affiliated"}
 {"name": "PySAL", "slug": null, "github_name": "PySAL", "relationship": "affiliated"}
-{"name": "Python(X,Y)", "slug": null, "github_name": null, "relationship": "affiliated"}
-{"name": "Python Satellite Data Analysis Toolkit (pysat)", "slug": null, "github_name": "pysat/pysat", "relationship": "affiliated"}
 {"name": "PyTorch-Ignite", "slug": null, "github_name": "pytorch/ignite", "relationship": "affiliated"}
+{"name": "PyVista", "slug": null, "github_name": "pyvista/pyvista", "relationship": "affiliated"}
+{"name": "Python Satellite Data Analysis Toolkit (pysat)", "slug": null, "github_name": "pysat/pysat", "relationship": "affiliated"}
+{"name": "Python(X,Y)", "slug": null, "github_name": null, "relationship": "affiliated"}
 {"name": "QuTiP", "slug": null, "github_name": "qutip/qutip", "relationship": "affiliated"}
 {"name": "Radis", "slug": null, "github_name": "radis/radis", "relationship": "affiliated"}
-{"name": "scikit-bio", "slug": null, "github_name": "biocore/scikit-bio", "relationship": "affiliated"}
-{"name": "signac", "slug": null, "github_name": "glotzerlab/signac", "relationship": "affiliated"}
-{"name": "sktime", "slug": null, "github_name": "sktime/sktime", "relationship": "affiliated"}
 {"name": "SkyPy", "slug": null, "github_name": "skypyproject/skypy", "relationship": "affiliated"}
 {"name": "Solcore", "slug": null, "github_name": "qpv-research-group/solcore5", "relationship": "affiliated"}
 {"name": "Spack", "slug": null, "github_name": "spack/spack", "relationship": "affiliated"}
 {"name": "Statsmodels", "slug": null, "github_name": "statsmodels/statsmodels", "relationship": "affiliated"}
-{"name": "Taskflow", "slug": null, "github_name": "taskflow/taskflow", "relationship": "affiliated"}
 {"name": "TNL - Template Numerical Library", "slug": null, "github_name": null, "relationship": "affiliated"}
+{"name": "Taskflow", "slug": null, "github_name": "taskflow/taskflow", "relationship": "affiliated"}
+{"name": "The Ibis Project", "slug": null, "github_name": null, "relationship": "affiliated"}
 {"name": "Theano", "slug": null, "github_name": "aesara-devs/aesara", "relationship": "affiliated"}
-{"name": "Yellowbrick", "slug": null, "github_name": "DistrictDataLabs/yellowbrick", "relationship": "affiliated"}
 {"name": "WESTPA", "slug": null, "github_name": "westpa/westpa", "relationship": "affiliated"}
+{"name": "Yellowbrick", "slug": null, "github_name": "DistrictDataLabs/yellowbrick", "relationship": "affiliated"}
+{"name": "bqplot", "slug": null, "github_name": "bqplot/bqplot", "relationship": "affiliated"}
+{"name": "igraph", "slug": null, "github_name": "igraph/igraphdata", "relationship": "affiliated"}
+{"name": "poliastro", "slug": null, "github_name": "poliastro/poliastro", "relationship": "affiliated"}
+{"name": "pomegranate", "slug": null, "github_name": "jmschrei/pomegranate", "relationship": "affiliated"}
+{"name": "pvlib", "slug": null, "github_name": "pvlib/pvlib-python", "relationship": "affiliated"}
+{"name": "pyiron", "slug": null, "github_name": "pyiron/pyiron", "relationship": "affiliated"}
+{"name": "scikit-bio", "slug": null, "github_name": "biocore/scikit-bio", "relationship": "affiliated"}
+{"name": "signac", "slug": null, "github_name": "glotzerlab/signac", "relationship": "affiliated"}
+{"name": "sktime", "slug": null, "github_name": "sktime/sktime", "relationship": "affiliated"}
