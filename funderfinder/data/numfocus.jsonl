@@ -26,7 +26,7 @@
 {"name": "xarray", "slug": "xarray", "github_name": "pydata/xarray", "relationship": "sponsored"}
 {"name": "Blosc", "slug": "blosc", "github_name": "Blosc/hdf5-blosc", "relationship": "sponsored"}
 {"name": "MathJax", "slug": "mathjax", "github_name": "mathjax/MathJax", "relationship": "sponsored"}
-{"name": "Dask", "slug": "dask", "github_name": null, "relationship": "sponsored"}
+{"name": "Dask", "slug": "dask", "github_name": "dask/dask", "relationship": "sponsored"}
 {"name": "mlpack", "slug": "mlpack", "github_name": "mlpack/mlpack", "relationship": "sponsored"}
 {"name": "Zarr", "slug": "zarr", "github_name": "zarr-developers/zarr-python", "relationship": "sponsored"}
 {"name": "MDAnalysis", "slug": "mdanalysis", "github_name": "bryanbraun/anchorjs", "relationship": "sponsored"}
@@ -71,6 +71,7 @@
 {"name": "FluxML", "slug": null, "github_name": "FluxML/Flux.jl", "relationship": "affiliated"}
 {"name": "Gensim", "slug": null, "github_name": "RaRe-Technologies/gensim", "relationship": "affiliated"}
 {"name": "GeomScale", "slug": null, "github_name": "GeomScale", "relationship": "affiliated"}
+{"name": "GeomStats", "slug": null, "github_name": null, "relationship": "affiliated"}
 {"name": "GeoPandas", "slug": null, "github_name": "geopandas/geopandas", "relationship": "affiliated"}
 {"name": "GNU Radio", "slug": null, "github_name": "gnuradio/gnuradio", "relationship": "affiliated"}
 {"name": "Gonum", "slug": null, "github_name": "gonum/gonum", "relationship": "affiliated"}

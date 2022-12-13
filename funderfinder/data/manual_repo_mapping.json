@@ -23,5 +23,6 @@
   "signac": "glotzerlab/signac",
   "Solcore": "qpv-research-group/solcore5",
   "Spack": "spack/spack",
-  "Theano": "aesara-devs/aesara"
+  "Theano": "aesara-devs/aesara",
+  "Dask": "dask/dask"
 }
