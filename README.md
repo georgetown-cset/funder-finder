@@ -4,6 +4,8 @@ This project allows you to retrieve funding information for a GitHub repository 
 funding sources we support include:
 
 - [Open Collective](funderfinder/sources/opencollective.py)
+- [Github Sponsors](funderfinder/sources/github_sponsors.py)
+- [NumFOCUS](funderfinder/sources/numfocus.py)
 
 We also have some general-purpose [utilities](funderfinder/utils).
 

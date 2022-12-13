@@ -9,7 +9,7 @@ import bs4
 import requests
 
 """
-We will scrape Numfocus's:
+We will scrape NumFOCUS's:
 
   * Sponsored projects (https://numfocus.org/sponsored-projects)
   * Affiliated projects (https://numfocus.org/sponsored-projects/affiliated-projects)
@@ -21,7 +21,8 @@ Sponsored and Affiliated projects, but we can add this later.
 For now, for each project we are recording three pieces of information:
 
   * name - this is the name of the project
-  * slug - for numfocus sponsored pages, this is the numfocus detail page slug (e.g. "nibabel" for "https://numfocus.org/project/nibabel")
+  * slug - for numfocus sponsored pages, this is the numfocus detail page slug
+    (e.g. "nibabel" for "https://numfocus.org/project/nibabel")
   * github_name - this is the owner/repo string of any GitHub repo we were able to associate with the project
   * relationship - this is "sponsored" for sponsored projects, and "affiliated" for affiliated projects
 """

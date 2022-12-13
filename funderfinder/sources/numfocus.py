@@ -3,14 +3,18 @@ import json
 import os
 
 """
-Get funding stats for numfocus-affiliated projects. At the moment, this only encompasses a boolean "is_affiliated"
-field that is true if the project is sponsored by or affiliated with Numfocus
+Get funding stats for NumFOCUS-affiliated or sponsored projects. At the moment, this is equivalent to a boolean
+"is_affiliated" field that is true if the project is sponsored by or affiliated with NumFOCUS.
+
+To determine whether a project is affiliated with NumFOCUS, we compare its name, slug, or github identifier
+to the list of NumFOCUS-affiliated projects maintained in ../data/numfocus.jsonl. This dataset is automatically
+updated on a weekly basis via a Github Action (.github/workflows/update_datasets.yml).
 """
 
 
 def get_funding_stats(args: dict) -> dict:
     """
-    Determines whether a project is sponsored or affiliated with Numfocus based on our scraped dataset and
+    Determines whether a project is sponsored or affiliated with NumFOCUS based on our scraped dataset and
     a project name, slug, or github owner and repo name
     :param args: Dict of metadata that we can use to match a numfocus project
     :return: Dict of funding stats
@@ -23,7 +27,7 @@ def get_funding_stats(args: dict) -> dict:
                 if not (meta[key] and args[key]):
                     continue
                 is_affiliated |= meta[key].lower() == args[key].lower()
-                # In some cases the Numfocus affiliation is at the GitHub organization level rather than at the repo
+                # In some cases the NumFOCUS affiliation is at the GitHub organization level rather than at the repo
                 # level. So also allow match on repo owner
                 if key == "github_name":
                     owner = args[key].split("/")[0].lower()
