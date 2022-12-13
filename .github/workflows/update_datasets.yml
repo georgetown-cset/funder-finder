@@ -20,4 +20,5 @@ jobs:
       - name: Create Pull Request
         id: cpr
         uses: peter-evans/create-pull-request@v4
-        commit-message: Update datasets
+        with:
+          commit-message: Update datasets
