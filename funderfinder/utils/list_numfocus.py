@@ -34,7 +34,14 @@ HEADERS = {
 REQUESTS_TIMEOUT = 5
 logging.basicConfig(level=logging.INFO)
 LOGGER = logging.getLogger("list_numfocus")
-with open(os.path.join("..", "data", "manual_repo_mapping.json")) as f:
+with open(
+    os.path.join(
+        os.path.dirname(os.path.abspath(__file__)),
+        "..",
+        "data",
+        "manual_repo_mapping.json",
+    )
+) as f:
     GITHUB_OVERRIDES = json.loads(f.read())
 
 
