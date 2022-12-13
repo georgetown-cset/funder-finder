@@ -20,7 +20,11 @@ def get_funding_stats(args: dict) -> dict:
     :return: Dict of funding stats
     """
     is_affiliated = False
-    with open(os.path.join("..", "data", "numfocus.jsonl")) as f:
+    with open(
+        os.path.join(
+            os.path.dirname(os.path.abspath(__file__)), "..", "data", "numfocus.jsonl"
+        )
+    ) as f:
         for line in f:
             meta = json.loads(line.strip())
             for key in args:
