@@ -3,6 +3,9 @@ name: Update Datasets
 on:
   schedule:
     - cron: "0 0 * * 0"
+  push:
+    branches:
+      - 13-numfocus
 
 jobs:
   scheduled-job:
