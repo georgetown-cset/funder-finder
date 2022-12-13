@@ -33,14 +33,20 @@ HEADERS = {
 REQUESTS_TIMEOUT = 5
 logging.basicConfig(level=logging.INFO)
 LOGGER = logging.getLogger("list_numfocus")
+with open(os.path.join("..", "data", "manual_repo_mapping.json")) as f:
+    GITHUB_OVERRIDES = json.loads(f.read())
 
 
-def get_github_link(text: str) -> str:
+def get_github_link(project_name: str, text: str) -> str:
     """
-    Given some text, extract the first link to a page on github that contains an owner and repo name
+    Given the project name and some text, use a manual mapping between the project name and the github repo if
+    available, or extract the first link to a page on github that contains an owner and repo name
+    :param project_name: Name of the GitHub project
     :param text: Text that may contain a github repo reference
     :return: The first reference found to a github repo, or None
     """
+    if project_name in GITHUB_OVERRIDES:
+        return GITHUB_OVERRIDES[project_name]
     match = re.search(
         r"(?i)github.com/([A-Za-z0-9-_.]+/[A-Za-z0-9-_.]*[A-Za-z0-9-_])", text
     )
@@ -67,7 +73,7 @@ def get_sponsored_projects() -> list:
         project_page = requests.get(
             link, headers=HEADERS, timeout=REQUESTS_TIMEOUT
         ).text
-        github_ref = get_github_link(project_page)
+        github_ref = get_github_link(name, project_page)
         if not github_ref:
             try:
                 project_page_soup = bs4.BeautifulSoup(
@@ -86,7 +92,7 @@ def get_sponsored_projects() -> list:
                     project_homepage_response = requests.get(
                         project_homepage, headers=HEADERS, timeout=REQUESTS_TIMEOUT
                     )
-                    github_ref = get_github_link(project_homepage_response.text)
+                    github_ref = get_github_link(name, project_homepage_response.text)
             except Exception as e:
                 LOGGER.warning(f"Exception when retrieving {link} for {name}: {e}")
         projects.append(
@@ -123,13 +129,13 @@ def get_affiliated_projects() -> list:
             .find("a")
             .text.strip()
         )
-        github_ref = get_github_link(link)
+        github_ref = get_github_link(name, link)
         if not github_ref:
             try:
                 project_page = requests.get(
                     link, headers=HEADERS, timeout=REQUESTS_TIMEOUT
                 )
-                github_ref = get_github_link(project_page.text)
+                github_ref = get_github_link(name, project_page.text)
             except Exception as e:
                 LOGGER.warning(f"Exception when retrieving {link} for {name}: {e}")
         projects.append(
