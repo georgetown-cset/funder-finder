@@ -76,15 +76,17 @@
 {"name": "GNU Radio", "slug": null, "github_name": "gnuradio/gnuradio", "relationship": "affiliated"}
 {"name": "Gonum", "slug": null, "github_name": "gonum/gonum", "relationship": "affiliated"}
 {"name": "Gridap", "slug": null, "github_name": "gridap/Gridap.jl", "relationship": "affiliated"}
+{"name": "igraph", "slug": null, "github_name": "igraph/igraphdata", "relationship": "affiliated"}
 {"name": "Manim", "slug": null, "github_name": "manimCommunity/manim", "relationship": "affiliated"}
 {"name": "Mesa: Agent-Based Modeling In Python", "slug": null, "github_name": "projectmesa/mesa", "relationship": "affiliated"}
 {"name": "MFEM", "slug": null, "github_name": "mfem/mfem", "relationship": "affiliated"}
+{"name": "NetKet", "slug": null, "github_name": "netket/netket", "relationship": "affiliated"}
 {"name": "Numba", "slug": null, "github_name": "numba/numba", "relationship": "affiliated"}
 {"name": "ObsPy", "slug": null, "github_name": "obspy/obspy", "relationship": "affiliated"}
-{"name": "Project Optuna", "slug": null, "github_name": "optuna/optuna", "relationship": "affiliated"}
 {"name": "Orange", "slug": null, "github_name": "biolab/orange3", "relationship": "affiliated"}
 {"name": "poliastro", "slug": null, "github_name": "poliastro/poliastro", "relationship": "affiliated"}
 {"name": "pomegranate", "slug": null, "github_name": "jmschrei/pomegranate", "relationship": "affiliated"}
+{"name": "Project Optuna", "slug": null, "github_name": "optuna/optuna", "relationship": "affiliated"}
 {"name": "PSL", "slug": null, "github_name": "PSLmodels", "relationship": "affiliated"}
 {"name": "pvlib", "slug": null, "github_name": "pvlib/pvlib-python", "relationship": "affiliated"}
 {"name": "PyLops", "slug": null, "github_name": "PyLops/pylops", "relationship": "affiliated"}
@@ -93,6 +95,7 @@
 {"name": "Python(X,Y)", "slug": null, "github_name": null, "relationship": "affiliated"}
 {"name": "Python Satellite Data Analysis Toolkit (pysat)", "slug": null, "github_name": "pysat/pysat", "relationship": "affiliated"}
 {"name": "PyTorch-Ignite", "slug": null, "github_name": "pytorch/ignite", "relationship": "affiliated"}
+{"name": "PyVista", "slug": null, "github_name": "pyvista/pyvista", "relationship": "affiliated"}
 {"name": "QuTiP", "slug": null, "github_name": "qutip/qutip", "relationship": "affiliated"}
 {"name": "Radis", "slug": null, "github_name": "radis/radis", "relationship": "affiliated"}
 {"name": "scikit-bio", "slug": null, "github_name": "biocore/scikit-bio", "relationship": "affiliated"}
@@ -104,6 +107,7 @@
 {"name": "Statsmodels", "slug": null, "github_name": "statsmodels/statsmodels", "relationship": "affiliated"}
 {"name": "Taskflow", "slug": null, "github_name": "taskflow/taskflow", "relationship": "affiliated"}
 {"name": "TNL - Template Numerical Library", "slug": null, "github_name": null, "relationship": "affiliated"}
+{"name": "The Ibis Project", "slug": null, "github_name": null, "relationship": "affiliated"}
 {"name": "Theano", "slug": null, "github_name": "aesara-devs/aesara", "relationship": "affiliated"}
-{"name": "Yellowbrick", "slug": null, "github_name": "DistrictDataLabs/yellowbrick", "relationship": "affiliated"}
 {"name": "WESTPA", "slug": null, "github_name": "westpa/westpa", "relationship": "affiliated"}
+{"name": "Yellowbrick", "slug": null, "github_name": "DistrictDataLabs/yellowbrick", "relationship": "affiliated"}
