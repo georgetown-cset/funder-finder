@@ -26,7 +26,7 @@
 {"name": "xarray", "slug": "xarray", "github_name": "pydata/xarray", "relationship": "sponsored"}
 {"name": "Blosc", "slug": "blosc", "github_name": "Blosc/hdf5-blosc", "relationship": "sponsored"}
 {"name": "MathJax", "slug": "mathjax", "github_name": "mathjax/MathJax", "relationship": "sponsored"}
-{"name": "Dask", "slug": "dask", "github_name": "dask/dask-blog", "relationship": "sponsored"}
+{"name": "Dask", "slug": "dask", "github_name": null, "relationship": "sponsored"}
 {"name": "mlpack", "slug": "mlpack", "github_name": "mlpack/mlpack", "relationship": "sponsored"}
 {"name": "Zarr", "slug": "zarr", "github_name": "zarr-developers/zarr-python", "relationship": "sponsored"}
 {"name": "MDAnalysis", "slug": "mdanalysis", "github_name": "bryanbraun/anchorjs", "relationship": "sponsored"}
@@ -61,8 +61,6 @@
 {"name": "Catalyst", "slug": null, "github_name": "catalyst-team/catalyst", "relationship": "affiliated"}
 {"name": "Clawpack", "slug": null, "github_name": "clawpack", "relationship": "affiliated"}
 {"name": "Colour", "slug": null, "github_name": "colour-science/colour", "relationship": "affiliated"}
-{"name": "Conda", "slug": null, "github_name": "conda", "relationship": "affiliated"}
-{"name": "CuPy", "slug": null, "github_name": "cupy/cupy", "relationship": "affiliated"}
 {"name": "CVXPY", "slug": null, "github_name": "cvxgrp/scs", "relationship": "affiliated"}
 {"name": "Cython", "slug": null, "github_name": "cython/cython", "relationship": "affiliated"}
 {"name": "Dash", "slug": null, "github_name": "plotly/dash", "relationship": "affiliated"}
@@ -88,7 +86,6 @@
 {"name": "pomegranate", "slug": null, "github_name": "jmschrei/pomegranate", "relationship": "affiliated"}
 {"name": "PSL", "slug": null, "github_name": "PSLmodels", "relationship": "affiliated"}
 {"name": "pvlib", "slug": null, "github_name": "pvlib/pvlib-python", "relationship": "affiliated"}
-{"name": "PyBaMM", "slug": null, "github_name": "pybamm-team/PyBaMM", "relationship": "affiliated"}
 {"name": "PyLops", "slug": null, "github_name": "PyLops/pylops", "relationship": "affiliated"}
 {"name": "pyiron", "slug": null, "github_name": "pyiron/pyiron", "relationship": "affiliated"}
 {"name": "PySAL", "slug": null, "github_name": "PySAL", "relationship": "affiliated"}
@@ -103,7 +100,6 @@
 {"name": "SkyPy", "slug": null, "github_name": "skypyproject/skypy", "relationship": "affiliated"}
 {"name": "Solcore", "slug": null, "github_name": "qpv-research-group/solcore5", "relationship": "affiliated"}
 {"name": "Spack", "slug": null, "github_name": "spack/spack", "relationship": "affiliated"}
-{"name": "Spyder", "slug": null, "github_name": "spyder-ide/lektor-icon", "relationship": "affiliated"}
 {"name": "Statsmodels", "slug": null, "github_name": "statsmodels/statsmodels", "relationship": "affiliated"}
 {"name": "Taskflow", "slug": null, "github_name": "taskflow/taskflow", "relationship": "affiliated"}
 {"name": "TNL - Template Numerical Library", "slug": null, "github_name": null, "relationship": "affiliated"}

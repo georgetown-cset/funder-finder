@@ -155,13 +155,17 @@ def get_projects(output_file: str) -> None:
     :param output_file: File where jsonl of project metadata should be written
     :return: None
     """
+    seen_projects = set()
     with open(output_file, mode="w") as f:
         sponsored_projects = get_sponsored_projects()
         for project in sponsored_projects:
+            seen_projects.add(project["name"])
             f.write(json.dumps(project) + "\n")
         affiliated_projects = get_affiliated_projects()
         for project in affiliated_projects:
-            f.write(json.dumps(project) + "\n")
+            # if a project is both sponsored and affiliated, only list it under sponsored
+            if project["name"] not in seen_projects:
+                f.write(json.dumps(project) + "\n")
 
 
 if __name__ == "__main__":
