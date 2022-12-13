@@ -31,7 +31,7 @@ def get_funding_sources(repo: str) -> list:
     """
     page = requests.get(f"https://github.com/{repo}")
     soup = bs4.BeautifulSoup(page.text, features="html.parser")
-    sponsor_elems = soup(text="Sponsor this project")
+    sponsor_elems = soup(string="Sponsor this project")
     if len(sponsor_elems) == 0:
         logging.warning(f"No sponsors found for {repo}")
         return []
