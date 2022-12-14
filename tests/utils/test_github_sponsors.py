@@ -72,4 +72,6 @@ class TestGithubSponsors(unittest.TestCase):
         )
         with open(test_file_path, encoding="utf-8") as test_json_file:
             test_json = json.load(test_json_file)
-        gs.parse_gh_user_gh_sponsors_json(test_json)
+
+        got = gs.parse_gh_user_gh_sponsors_json(test_json)
+        self.assertEqual(got, 15)
