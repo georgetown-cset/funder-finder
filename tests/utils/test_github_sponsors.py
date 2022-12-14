@@ -1,4 +1,7 @@
+"""GitHub sponsors-related testing"""
+
 import json
+import os
 import unittest
 from urllib.error import HTTPError
 
@@ -62,3 +65,11 @@ class TestGithubSponsors(unittest.TestCase):
 
     def test_get_gh_user_gh_sponsors(self):
         gs.get_gh_user_gh_sponsors("ljharb")
+
+    def test_parse_gh_user_gh_sponsors_json(self):
+        test_file_path = os.path.join(
+            os.path.dirname(__file__), "test-gh-user-gh-sponsors.json"
+        )
+        with open(test_file_path, encoding="utf-8") as test_json_file:
+            test_json = json.load(test_json_file)
+        gs.parse_gh_user_gh_sponsors_json(test_json)
