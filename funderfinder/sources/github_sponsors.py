@@ -76,7 +76,7 @@ def parse_gh_org_funding_json(gh_org_funding_json: Any) -> dict:
 def get_gh_top_contributors_json(gh_url: str, num_top_contribs: int = 3) -> list:
     """
     Retrieves JSON of top contributors to a GitHub repo and whether these
-    contributors have GitHub sponsors. Needs to use GitHub REST API becayse
+    contributors have GitHub sponsors. Needs to use GitHub REST API because
     GraphQL API doesn't return contributors (as of Dec. 2022).
     :param gh_url: GitHub repository URL
     :param num_top_contribs: number of contributors to check
@@ -142,6 +142,16 @@ def get_gh_user_gh_sponsors(user: str) -> Any:
     return data
 
 
+def parse_gh_user_gh_sponsors_json(gh_user_gh_sponsors_json: Any) -> int:
+    """
+    Retrieves GitHub sponsors statistics for a GitHub organization.
+    :param gh_user_gh_sponsors_json: JSON of GitHub user GitHub sponsor info
+    :return: int of number of sponsors
+    """
+    num_sponsors = len(gh_user_gh_sponsors_json["data"]["user"]["sponsors"]["edges"])
+    return num_sponsors
+
+
 if __name__ == "__main__":
     assert os.environ.get(API_KEY), "Please `export GITHUB_TOKEN=<your GitHub token>"
     assert os.environ.get(
@@ -154,7 +164,16 @@ if __name__ == "__main__":
     )
     args = parser.parse_args()
 
-    # org = get_org_from_github_url(args.repo)
-    # stats = get_gh_org_funding_json(org)
-    print(get_gh_user_gh_sponsors("ljharb"))
-    # print(stats)
+    print(f"Repo: {args.repo}")
+
+    org = get_org_from_github_url(args.repo)
+    stats = get_gh_org_funding_json(org)
+    print(
+        f"The number of organizational sponsors of {org} is {stats['data']['organization']['sponsors']['totalCount']}"
+    )
+
+    top_contribs = get_gh_top_contributors_json(args.repo)
+    for contrib in top_contribs:
+        sponsors_json = get_gh_user_gh_sponsors(contrib)
+        num_sponsors = parse_gh_user_gh_sponsors_json(sponsors_json)
+        print(f"Top contributor {contrib} has {num_sponsors} sponsors")
