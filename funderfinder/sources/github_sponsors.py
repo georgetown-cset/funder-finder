@@ -30,7 +30,7 @@ def get_org_and_owner_from_github_url(gh_url: str) -> str:
 
 def get_gh_org_funding_json(org: str) -> Any:
     """
-    Retrives GitHub sponsors JSON for a GitHub organization. See:
+    Retrieves GitHub sponsors JSON for a GitHub organization. See:
     :param org: identifier for the GitHub organization
     :return: JSON
     """
@@ -104,7 +104,7 @@ def get_gh_top_contributors_json(gh_url: str, num_top_contribs: int = 3) -> list
 
 def get_gh_user_gh_sponsors(user: str) -> Any:
     """
-    Retrieves GitHub sponsors JSON for a GitHub organization.
+    Retrieves GitHub sponsors JSON for a GitHub user.
     :param user: identifier a GitHub user
     :return: JSON
     """
