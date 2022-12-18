@@ -104,7 +104,7 @@ def get_gh_top_contributors_json(gh_url: str, num_top_contribs: int = 3) -> list
 
 def get_gh_user_gh_sponsors(user: str) -> Any:
     """
-    Retrieves GitHub sponsors JSON for a GitHub organization. See:
+    Retrieves GitHub sponsors JSON for a GitHub organization.
     :param user: identifier a GitHub user
     :return: JSON
     """
