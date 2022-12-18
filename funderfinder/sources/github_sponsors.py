@@ -89,8 +89,7 @@ def get_gh_top_contributors_json(gh_url: str, num_top_contribs: int = 3) -> list
         + "/contributors?page=1"
         + "&per_page="
         + str(num_top_contribs),
-        # convert username and token to strings per requests's specifications
-        auth=(str(os.environ.get("GITHUB_USERNAME")), os.environ.get("GITHUB_TOKEN")),
+        auth=(os.environ.get("GITHUB_USERNAME"), os.environ.get("GITHUB_TOKEN")),
     )
 
     if response.ok:
