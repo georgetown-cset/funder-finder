@@ -61,6 +61,15 @@ def get_github_link(project_name: str, text: str) -> str:
     return None if not match else match.group(1)
 
 
+def get_numfocus_slug(url: str) -> str:
+    """
+    Given a numfocus url like https://numfocus.org/project/numpy, returns numpy
+    :param url: Numfocus url
+    :return: project slug
+    """
+    return url.strip().strip("/").split("/")[-1]
+
+
 def get_sponsored_projects() -> list:
     """
     Retrieve all numfocus sponsored projects
@@ -106,7 +115,7 @@ def get_sponsored_projects() -> list:
         projects.append(
             {
                 "name": name,
-                "slug": link.strip().strip("/").split("/")[-1],
+                "slug": get_numfocus_slug(link),
                 "github_name": github_ref,
                 "relationship": "sponsored",
             }
@@ -144,7 +153,7 @@ def get_affiliated_projects() -> list:
                     link, headers=HEADERS, timeout=REQUESTS_TIMEOUT
                 )
                 github_ref = get_github_link(name, project_page.text)
-            except Exception as e:
+            except requests.exceptions.RequestException as e:
                 LOGGER.warning(f"Exception when retrieving {link} for {name}: {e}")
         projects.append(
             {

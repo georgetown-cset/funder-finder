@@ -12,11 +12,11 @@ updated on a weekly basis via a Github Action (.github/workflows/update_datasets
 """
 
 
-def get_funding_stats(args: dict) -> dict:
+def get_funding_stats(search_params: dict) -> dict:
     """
     Determines whether a project is sponsored or affiliated with NumFOCUS based on our scraped dataset and
     a project name, slug, or github owner and repo name
-    :param args: Dict of metadata that we can use to match a numfocus project
+    :param search_params: Dict of user-provided metadata that we can use to match a numfocus project
     :return: Dict of funding stats
     """
     is_affiliated = False
@@ -26,16 +26,22 @@ def get_funding_stats(args: dict) -> dict:
         )
     ) as f:
         for line in f:
-            meta = json.loads(line.strip())
-            for key in args:
-                if not (meta[key] and args[key]):
+            project_metadata = json.loads(line.strip())
+            for key in search_params:
+                # In this block, we iterate through metadata fields provided by the user to match a numfocus project.
+                # Some of these fields may be null either in the user-provided input (`search_params`), or in the
+                # metadata we have for the current numfocus project (`project_metadata`). If either of these values
+                # are null, run no further checks
+                if not (project_metadata[key] and search_params[key]):
                     continue
-                is_affiliated |= meta[key].lower() == args[key].lower()
+                is_affiliated |= (
+                    project_metadata[key].lower() == search_params[key].lower()
+                )
                 # In some cases the NumFOCUS affiliation is at the GitHub organization level rather than at the repo
                 # level. So also allow match on repo owner
                 if key == "github_name":
-                    owner = args[key].split("/")[0].lower()
-                    is_affiliated |= meta[key].lower() == owner
+                    owner = search_params[key].split("/")[0].lower()
+                    is_affiliated |= project_metadata[key].lower() == owner
     return {
         "num_contributors": None,
         "amount_received_usd": None,

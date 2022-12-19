@@ -2,7 +2,7 @@ import json
 import os
 import unittest
 
-from funderfinder.utils.list_numfocus import get_github_link
+from funderfinder.utils.list_numfocus import get_github_link, get_numfocus_slug
 
 from ..context import funderfinder
 
@@ -56,3 +56,8 @@ class TestListNumfocus(unittest.TestCase):
                     meta["relationship"] == "sponsored"
                 )
         self.assertTrue(jupyter_present)
+
+    def test_get_numfocus_slug(self):
+        self.assertEqual(
+            "numpy", get_numfocus_slug("https://numfocus.org/project/numpy")
+        )
