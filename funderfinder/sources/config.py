@@ -1,4 +1,3 @@
-from .github_sponsors import run
 from .numfocus import NumFocusFinder
 from .opencollective import OpenCollectiveFinder
 

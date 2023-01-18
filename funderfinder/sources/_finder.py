@@ -23,11 +23,7 @@ class Finder:
         """
         return project.strip().split("/")[0]
 
-    def run(
-        self,
-        gh_project_slug: Union[str, None] = None,
-        project_name: Union[str, None] = None,
-    ) -> Union[dict, None]:
+    def run(self, gh_project_slug: Union[str, None] = None) -> Union[dict, None]:
         """
         This method should be implemented for subclasses and, if funding is found for a given source, return a
         nonempty subset of the following information
@@ -49,7 +45,6 @@ class Finder:
           { "is_funded": True }
         }
         :param gh_project_slug: Identifier for the project owner and repo, e.g. georgetown-cset/funder-finder
-        :param project_name: Name of the project, e.g. Funder Finder
         :return: A dict of metadata about the project's funding, if funded, else None
         """
         pass
