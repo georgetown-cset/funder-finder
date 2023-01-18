@@ -27,14 +27,10 @@ class NumFocusFinder(Finder):
         :return: Dict of funding stats
         """
         is_affiliated = False
-        with open(
-            os.path.join(
-                os.path.dirname(os.path.abspath(__file__)),
-                "..",
-                "data",
-                "numfocus.jsonl",
-            )
-        ) as f:
+        listing_file = os.path.join(
+            os.path.dirname(os.path.abspath(__file__)), "..", "data", "numfocus.jsonl"
+        )
+        with open(listing_file) as f:
             for line in f:
                 project_metadata = json.loads(line.strip())
                 for key in search_params:
