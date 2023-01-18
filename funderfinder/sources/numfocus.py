@@ -53,14 +53,15 @@ class NumFocusFinder(Finder):
                 "is_funded": True,
             }
 
-    def run(self, gh_project_slug: Union[str, None] = None) -> Union[dict, None]:
-        return self.get_funding_stats(
+    def run(self, gh_project_slug: Union[str, None] = None) -> list:
+        stats = self.get_funding_stats(
             {
                 "name": None,
                 "slug": self.get_repo_name(gh_project_slug),
                 "github_name": gh_project_slug,
             }
         )
+        return [stats] if stats else []
 
 
 if __name__ == "__main__":

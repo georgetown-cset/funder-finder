@@ -19,10 +19,11 @@ def get_project_funders(repo_name: str) -> list:
         finder = finder_class()
         funding = finder.run(repo_name)
         if funding:
-            funding["type"] = finder_class.name
-            funding["is_funded"] = True
-            funding["date_of_data_collection"] = datetime.now().strftime("%Y-%m-%d")
-            project_funders.append(funding)
+            for source in funding:
+                source["type"] = finder_class.name
+                source["is_funded"] = True
+                source["date_of_data_collection"] = datetime.now().strftime("%Y-%m-%d")
+                project_funders.append(source)
     return project_funders
 
 

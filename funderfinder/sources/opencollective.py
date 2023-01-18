@@ -55,8 +55,9 @@ class OpenCollectiveFinder(Finder):
                 "total_funding_usd": stats["stats"]["totalAmountReceived"]["value"],
             }
 
-    def run(self, gh_project_slug: Union[str, None] = None) -> Union[dict, None]:
-        return self.get_funding_stats(self.get_repo_name(gh_project_slug))
+    def run(self, gh_project_slug: Union[str, None] = None) -> list:
+        stats = self.get_funding_stats(self.get_repo_name(gh_project_slug))
+        return [stats] if stats else []
 
 
 if __name__ == "__main__":
