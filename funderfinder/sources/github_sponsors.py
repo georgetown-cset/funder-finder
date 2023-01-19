@@ -132,7 +132,8 @@ class GitHubSponsorsFinder(Finder):
         data = result.json()
         return data
 
-    def parse_gh_user_gh_sponsors_json(self, gh_user_gh_sponsors_json: Any) -> int:
+    @staticmethod
+    def parse_gh_user_gh_sponsors_json(gh_user_gh_sponsors_json: Any) -> int:
         """
         Retrieves GitHub sponsors statistics for a GitHub organization.
         :param gh_user_gh_sponsors_json: JSON of GitHub user GitHub sponsor info
@@ -143,11 +144,11 @@ class GitHubSponsorsFinder(Finder):
         )
         return num_sponsors
 
-    def get_funding_stats(self, repo_name: str):
+    def get_funding_stats(self, repo_name: str) -> None:
         """
-
-        :param repo_name:
-        :return:
+        Prints project funding stats for org and contributor-level funding
+        :param repo_name: Repo we want to retrieve funding stats for
+        :return: None
         """
         print(f"Repo: {repo_name}")
 
