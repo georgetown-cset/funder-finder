@@ -12,13 +12,14 @@ class GitHubSponsorsFinder(Finder):
     name = "Github Sponsors"
     API_KEY = "GITHUB_TOKEN"
 
-    def __init__(self):
-        assert os.environ.get(
-            self.API_KEY
-        ), "Please `export GITHUB_TOKEN=<your GitHub token>"
-        assert os.environ.get(
-            "GITHUB_USERNAME"
-        ), "Please `export GITHUB_USERNAME=<your GitHub username>"
+    def __init__(self, run_checks=True):
+        if run_checks:
+            assert os.environ.get(
+                self.API_KEY
+            ), "Please `export GITHUB_TOKEN=<your GitHub token>"
+            assert os.environ.get(
+                "GITHUB_USERNAME"
+            ), "Please `export GITHUB_USERNAME=<your GitHub username>"
 
     def get_gh_org_funding_json(self, org: str) -> Any:
         """

@@ -9,7 +9,7 @@ import funderfinder.sources.github_sponsors as gs
 
 
 class TestGithubSponsors(unittest.TestCase):
-    finder = gs.GitHubSponsorsFinder()
+    finder = gs.GitHubSponsorsFinder(run_checks=False)
 
     def test_get_gh_org_funding_json(self):
         try:
