@@ -37,7 +37,7 @@
 {"name": "Shogun", "slug": "shogun", "github_name": "shogun-toolbox/shogun", "relationship": "sponsored"}
 {"name": "Spyder", "slug": "spyder", "github_name": "spyder-ide/spyder", "relationship": "sponsored"}
 {"name": "Stan", "slug": "stan", "github_name": "stan-dev", "relationship": "sponsored"}
-{"name": "SunPy", "slug": "sunpy", "github_name": null, "relationship": "sponsored"}
+{"name": "SunPy", "slug": "sunpy", "github_name": "sunpy/sunpy-soar", "relationship": "sponsored"}
 {"name": "SymPy", "slug": "sympy", "github_name": "sympy/sympy", "relationship": "sponsored"}
 {"name": "TARDIS", "slug": "tardis", "github_name": "rtfd/sphinx_rtd_theme", "relationship": "sponsored"}
 {"name": "WorldWide Telescope", "slug": "worldwide-telescope", "github_name": "WorldWideTelescope/wwt-webgl-engine", "relationship": "sponsored"}
@@ -98,7 +98,7 @@
 {"name": "Statsmodels", "slug": null, "github_name": "statsmodels/statsmodels", "relationship": "affiliated"}
 {"name": "TNL - Template Numerical Library", "slug": null, "github_name": null, "relationship": "affiliated"}
 {"name": "Taskflow", "slug": null, "github_name": "taskflow/taskflow", "relationship": "affiliated"}
-{"name": "The Ibis Project", "slug": null, "github_name": null, "relationship": "affiliated"}
+{"name": "The Ibis Project", "slug": null, "github_name": "ibis-project/ibis", "relationship": "affiliated"}
 {"name": "Theano", "slug": null, "github_name": "aesara-devs/aesara", "relationship": "affiliated"}
 {"name": "WESTPA", "slug": null, "github_name": "westpa/westpa", "relationship": "affiliated"}
 {"name": "Yellowbrick", "slug": null, "github_name": "DistrictDataLabs/yellowbrick", "relationship": "affiliated"}
@@ -110,4 +110,3 @@
 {"name": "pyiron", "slug": null, "github_name": "pyiron/pyiron", "relationship": "affiliated"}
 {"name": "scikit-bio", "slug": null, "github_name": "biocore/scikit-bio", "relationship": "affiliated"}
 {"name": "signac", "slug": null, "github_name": "glotzerlab/signac", "relationship": "affiliated"}
-{"name": "sktime", "slug": null, "github_name": "sktime/sktime", "relationship": "affiliated"}
