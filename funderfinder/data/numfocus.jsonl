@@ -67,7 +67,7 @@
 {"name": "Devito", "slug": null, "github_name": "devitocodes/devito", "relationship": "affiliated"}
 {"name": "DyND", "slug": null, "github_name": "libdynd/libdynd", "relationship": "affiliated"}
 {"name": "Effective Quadratures", "slug": null, "github_name": "equadratures/equadratures", "relationship": "affiliated"}
-{"name": "FluxML", "slug": null, "github_name": "FluxML/model-zoo", "relationship": "affiliated"}
+{"name": "FluxML", "slug": null, "github_name": "FluxML/Flux.jl", "relationship": "affiliated"}
 {"name": "GNU Radio", "slug": null, "github_name": "gnuradio/gnuradio", "relationship": "affiliated"}
 {"name": "Gensim", "slug": null, "github_name": "RaRe-Technologies/gensim", "relationship": "affiliated"}
 {"name": "GeoPandas", "slug": null, "github_name": "geopandas/geopandas", "relationship": "affiliated"}
