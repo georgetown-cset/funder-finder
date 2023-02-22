@@ -24,5 +24,6 @@
   "Solcore": "qpv-research-group/solcore5",
   "Spack": "spack/spack",
   "Theano": "aesara-devs/aesara",
-  "Dask": "dask/dask"
+  "Dask": "dask/dask",
+  "FluxML": "FluxML/Flux.jl"
 }
