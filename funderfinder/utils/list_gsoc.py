@@ -7,7 +7,8 @@ import time
 
 import bs4
 import requests
-from utils import GITHUB_ORG_PATTERN, GITHUB_REPO_PATTERN, SLEEP_INTERVAL
+
+from .utils import GITHUB_ORG_PATTERN, GITHUB_REPO_PATTERN, SLEEP_INTERVAL
 
 """
 We will scrape Google Summer of Code's:
