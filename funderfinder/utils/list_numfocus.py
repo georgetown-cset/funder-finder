@@ -8,7 +8,7 @@ import time
 import bs4
 import requests
 
-from .utils import GITHUB_REPO_PATTERN
+from .utils import GITHUB_REPO_PATTERN, SLEEP_INTERVAL
 
 """
 We will scrape NumFOCUS's:
@@ -120,8 +120,7 @@ def get_sponsored_projects() -> list:
                 "relationship": "sponsored",
             }
         )
-        # don't make requests any faster than every 2 seconds
-        time.sleep(2)
+        time.sleep(SLEEP_INTERVAL)
     return projects
 
 
