@@ -8,6 +8,8 @@ import time
 import bs4
 import requests
 
+from .utils import GITHUB_REPO_PATTERN
+
 """
 We will scrape NumFOCUS's:
 
@@ -55,9 +57,7 @@ def get_github_link(project_name: str, text: str) -> str:
     """
     if project_name in GITHUB_OVERRIDES:
         return GITHUB_OVERRIDES[project_name]
-    match = re.search(
-        r"(?i)github.com/([A-Za-z0-9-_.]+/[A-Za-z0-9-_.]*[A-Za-z0-9-_])", text
-    )
+    match = re.search(GITHUB_REPO_PATTERN, text)
     return None if not match else match.group(1)
 
 
