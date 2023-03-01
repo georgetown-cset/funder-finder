@@ -29,6 +29,15 @@ class TestListGSOC(unittest.TestCase):
             ),
         )
 
+    def test_get_link_match_gist(self):
+        # github gists should not match
+        self.assertEqual(
+            [],
+            get_link_matches(
+                "https://gist.github.com/sniok/fb6a1bcf4cf78303a874fa2389739764"
+            ),
+        )
+
     def test_get_early_archive_project_ext_link(self):
         fragment = """
         <span class="mdl-list__item-primary-content">
@@ -44,8 +53,9 @@ class TestListGSOC(unittest.TestCase):
                 "name": "BEAM Community",
                 "link": "https://www.google-melange.com/archive/gsoc/2015/orgs/beamcommunity",
                 "repos": ["beamcommunity/beamcommunity.github.com"],
+                "year": 2016,
             },
-            get_early_archive_project(soup),
+            get_early_archive_project(soup, 2016),
         )
 
     def test_get_early_archive_project_body_link(self):
@@ -63,8 +73,9 @@ class TestListGSOC(unittest.TestCase):
                 "name": "Encyclopedia of Life",
                 "link": "https://www.google-melange.com/archive/gsoc/2015/orgs/eol",
                 "repos": ["EOL"],
+                "year": 2015,
             },
-            get_early_archive_project(soup),
+            get_early_archive_project(soup, 2015),
         )
 
     def test_get_early_archive_project_student_project_link(self):
@@ -82,6 +93,7 @@ class TestListGSOC(unittest.TestCase):
                 "name": "Mono Project",
                 "link": "https://www.google-melange.com/archive/gsoc/2015/orgs/mono",
                 "repos": ["ddobrev/QtSharp"],
+                "year": 2017,
             },
-            get_early_archive_project(soup),
+            get_early_archive_project(soup, 2017),
         )

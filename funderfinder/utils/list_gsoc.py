@@ -3,6 +3,7 @@ import json
 import os
 import re
 import time
+from datetime import datetime
 from itertools import chain
 
 import bs4
@@ -54,10 +55,11 @@ def get_link_matches(text: str) -> list:
     """
     repo_matches = re.findall(GITHUB_REPO_PATTERN, text)
     if repo_matches:
-        return list(set([repo_match for repo_match in repo_matches]))
+        return list(set([repo_match[1] for repo_match in repo_matches]))
+    # At the moment, we only look for org matches if we didn't find a specific repo in the text
     org_matches = re.findall(GITHUB_ORG_PATTERN, text)
     if org_matches:
-        return list(set([org_match[0] for org_match in org_matches]))
+        return list(set([org_match[1] for org_match in org_matches]))
     return []
 
 
@@ -91,22 +93,21 @@ def get_early_archive_repos(link: str) -> list:
         student_page_links = get_link_matches(student_project_page.text)
         if student_page_links:
             repos.extend(student_page_links)
-            print("!!!!1!!!!!!!!!!!!!!FOUND ONE!!!!1!!!!!!!!!!!!!!")
-            print(student_page_links)
         time.sleep(SLEEP_INTERVAL)
     return list(set(repos))
 
 
-def get_early_archive_project(container: bs4.BeautifulSoup) -> dict:
+def get_early_archive_project(container: bs4.BeautifulSoup, year: int) -> dict:
     """
     Get a pre-2016 project's metadata
     :param container: BeautifulSoup container containing the project's name and link to GSOC's detail page
+    :param year: Year the project appeared (a project may appear in more than one year)
     :return: Dict containing project's name, link to detail page, and any repos/orgs we found for the project
     """
     name = container.find("a").text.strip()
     link = extract_listing_link(container)
     repos = get_early_archive_repos(link)
-    return {"name": name, "link": link, "repos": repos}
+    return {"name": name, "link": link, "repos": repos, "year": year}
 
 
 def get_early_archive_year_projects(link: str) -> iter:
@@ -118,9 +119,9 @@ def get_early_archive_year_projects(link: str) -> iter:
     listing_page = requests.get(link)
     soup = bs4.BeautifulSoup(listing_page.text, features="html.parser")
     project_containers = get_early_archive_listing_links(soup)
+    year = int(link.strip().strip("/").split("/")[-1])
     for container in project_containers:
-        meta = get_early_archive_project(container)
-        print(meta)
+        meta = get_early_archive_project(container, year)
         yield meta
         time.sleep(SLEEP_INTERVAL)
 
@@ -143,12 +144,71 @@ def get_projects_before_2016() -> iter:
             yield project
 
 
+def get_modern_archive_project(year: int, slug: str) -> dict:
+    """
+
+    :param year:
+    :param slug:
+    :return:
+    """
+    project_url = f"https://summerofcode.withgoogle.com/api/archive/programs/{year}/organizations/{slug}/"
+    meta = requests.get(project_url).json()
+    repos = []
+    repos.extend(get_link_matches(meta["description_html"]))
+    repos.extend(get_link_matches(meta["ideas_list_url"]))
+    for student_project in meta["projects"]:
+        repos.extend(get_link_matches(student_project["abstract_html"]))
+        repos.extend(get_link_matches(student_project["project_code_url"]))
+    return {
+        "name": meta["name"],
+        "link": project_url,
+        "repos": list(set(repos)),
+        "year": year,
+    }
+
+
+def get_modern_archive_projects(year: int) -> tuple:
+    """
+
+    :param year:
+    :return:
+    """
+    org_url = f"https://summerofcode.withgoogle.com/api/archive/programs/{year}/organizations/"
+    orgs = requests.get(org_url).json()
+    is_ok = (type(orgs) == list) and (len(orgs) > 0)
+    if not is_ok:
+        return False, []
+    meta = (get_modern_archive_project(year, org["slug"]) for org in orgs)
+    return True, meta
+
+
+def get_curr_year_projects(year: int) -> iter:
+    """
+
+    :param year:
+    :return:
+    """
+    return []
+
+
 def get_projects_2016_onward() -> iter:
     """
     Retrieves projects from 2016 onward (GSOC displays these with different website structure from earlier years)
     :return: A generator of dicts containing project metadata
     """
-    return []
+    curr_year = datetime.now().year
+    for year in range(2016, curr_year + 1):
+        print(f"Getting projects for {year}")
+        success, projects = get_modern_archive_projects(year)
+        if success:
+            for project in projects:
+                yield project
+        # If there isn't an archive page for the current year, we may still have active projects with some
+        # metadata we can scrape from the current year's page
+        else:
+            projects = get_curr_year_projects(year)
+            for project in projects:
+                yield project
 
 
 def get_projects(output_file: str) -> None:
