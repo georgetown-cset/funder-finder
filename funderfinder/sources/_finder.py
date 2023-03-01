@@ -22,6 +22,9 @@ class Finder:
         :param project: Github project name
         :return: Owner name
         """
+        if "/" not in project:
+            # then we already have the owner
+            return project.strip()
         return project.strip().split("/")[-2]
 
     @staticmethod
