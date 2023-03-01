@@ -50,12 +50,12 @@ class TestListGSOC(unittest.TestCase):
 
     def test_get_early_archive_project_body_link(self):
         fragment = """
-<span class="mdl-list__item-primary-content">
-<span class="small-logo-box mdl-list__item-icon">
-<img alt="Encyclopedia of Life logo" class="small-logo" src="/archive/gsoc/2015/orgs/eol/logo-30.png"/>
-</span>
-<a href="/archive/gsoc/2015/orgs/eol">Encyclopedia of Life</a>
-</span>
+        <span class="mdl-list__item-primary-content">
+        <span class="small-logo-box mdl-list__item-icon">
+        <img alt="Encyclopedia of Life logo" class="small-logo" src="/archive/gsoc/2015/orgs/eol/logo-30.png"/>
+        </span>
+        <a href="/archive/gsoc/2015/orgs/eol">Encyclopedia of Life</a>
+        </span>
         """
         soup = bs4.BeautifulSoup(fragment, features="html.parser")
         self.assertEqual(
@@ -63,6 +63,25 @@ class TestListGSOC(unittest.TestCase):
                 "name": "Encyclopedia of Life",
                 "link": "https://www.google-melange.com/archive/gsoc/2015/orgs/eol",
                 "repos": ["EOL"],
+            },
+            get_early_archive_project(soup),
+        )
+
+    def test_get_early_archive_project_student_project_link(self):
+        fragment = """
+        <span class="mdl-list__item-primary-content">
+        <span class="small-logo-box mdl-list__item-icon">
+        <img alt="Mono Project logo" class="small-logo" src="/archive/gsoc/2015/orgs/mono/logo-30.png"/>
+        </span>
+        <a href="/archive/gsoc/2015/orgs/mono">Mono Project</a>
+        </span>
+        """
+        soup = bs4.BeautifulSoup(fragment, features="html.parser")
+        self.assertEqual(
+            {
+                "name": "Mono Project",
+                "link": "https://www.google-melange.com/archive/gsoc/2015/orgs/mono",
+                "repos": ["ddobrev/QtSharp"],
             },
             get_early_archive_project(soup),
         )
