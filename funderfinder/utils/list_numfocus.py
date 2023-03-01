@@ -58,7 +58,7 @@ def get_github_link(project_name: str, text: str) -> str:
     if project_name in GITHUB_OVERRIDES:
         return GITHUB_OVERRIDES[project_name]
     match = re.search(GITHUB_REPO_PATTERN, text)
-    return None if not match else match.group(1)
+    return None if not match else match.group(2)
 
 
 def get_numfocus_slug(url: str) -> str:
