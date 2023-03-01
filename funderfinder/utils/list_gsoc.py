@@ -16,6 +16,7 @@ We will scrape Google Summer of Code's:
 
   * 2009-2015 archive (https://www.google-melange.com/archive/gsoc)
   * More recent projects, 2016 onward (https://summerofcode.withgoogle.com/archive)
+  * The current year's project, if not yet archived (https://summerofcode.withgoogle.com/programs/2023/organizations)
 
 For each project, we will affiliate the project with specific repos or entire organizations
 (if no repo is specified) that are found in:
@@ -151,6 +152,7 @@ def get_modern_archive_project(year: int, slug: str) -> dict:
     :param slug:
     :return:
     """
+    time.sleep(SLEEP_INTERVAL)
     project_url = f"https://summerofcode.withgoogle.com/api/archive/programs/{year}/organizations/{slug}/"
     meta = requests.get(project_url).json()
     repos = []
@@ -182,13 +184,39 @@ def get_modern_archive_projects(year: int) -> tuple:
     return True, meta
 
 
+def get_curr_year_project(year: int, slug: str) -> dict:
+    """
+
+    :param year:
+    :param slug:
+    :return:
+    """
+    time.sleep(SLEEP_INTERVAL)
+    project_url = f"https://summerofcode.withgoogle.com/api/organization/{slug}/"
+    meta = requests.get(project_url).json()
+    repos = []
+    repos.extend(get_link_matches(meta["description"]))
+    repos.extend(get_link_matches(meta["ideas_link"]))
+    repos.extend(get_link_matches(meta["source_code"]))
+    repos.extend(get_link_matches(meta["website_url"]))
+    return {
+        "name": meta["name"],
+        "link": project_url,
+        "repos": list(set(repos)),
+        "year": year,
+    }
+
+
 def get_curr_year_projects(year: int) -> iter:
     """
 
     :param year:
     :return:
     """
-    return []
+    org_url = f"https://summerofcode.withgoogle.com/api/program/{year}/organizations/"
+    orgs = requests.get(org_url).json()
+    if orgs["type"] == list:
+        return (get_modern_archive_project(year, org["slug"]) for org in orgs)
 
 
 def get_projects_2016_onward() -> iter:

@@ -2,7 +2,12 @@ import unittest
 
 import bs4
 
-from funderfinder.utils.list_gsoc import get_early_archive_project, get_link_matches
+from funderfinder.utils.list_gsoc import (
+    get_curr_year_project,
+    get_early_archive_project,
+    get_link_matches,
+    get_modern_archive_projects,
+)
 
 from ..context import funderfinder
 
@@ -96,4 +101,20 @@ class TestListGSOC(unittest.TestCase):
                 "year": 2017,
             },
             get_early_archive_project(soup, 2017),
+        )
+
+    def test_get_modern_archive_projects_has_expected_size(self):
+        success, projects = get_modern_archive_projects(2016)
+        self.assertTrue(success)
+        self.assertEqual(178, len([p for p in projects]))
+
+    def test_get_curr_year_project(self):
+        self.assertEqual(
+            {
+                "name": "Eclipse Foundation",
+                "link": "https://summerofcode.withgoogle.com/api/organization/eclipse-foundation/",
+                "repos": ["eclipse"],
+                "year": 2023,
+            },
+            get_curr_year_project(2023, "eclipse-foundation"),
         )
