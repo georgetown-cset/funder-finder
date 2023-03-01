@@ -215,8 +215,8 @@ def get_curr_year_projects(year: int) -> iter:
     """
     org_url = f"https://summerofcode.withgoogle.com/api/program/{year}/organizations/"
     orgs = requests.get(org_url).json()
-    if orgs["type"] == list:
-        return (get_modern_archive_project(year, org["slug"]) for org in orgs)
+    if type(orgs) == list:
+        return (get_curr_year_project(year, org["slug"]) for org in orgs)
 
 
 def get_projects_2016_onward() -> iter:
