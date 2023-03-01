@@ -1,9 +1,9 @@
 import argparse
 import json
-import logging
 import os
 import re
 import time
+from itertools import chain
 
 import bs4
 import requests
@@ -91,12 +91,23 @@ def get_early_archive_repos(link: str) -> list:
         student_page_link = get_link_match(student_project_page.text)
         if student_page_link:
             repos.append(student_page_link)
-        print(student_project_link)
         time.sleep(SLEEP_INTERVAL)
     return repos
 
 
-def get_early_archive_projects(link: str) -> list:
+def get_early_archive_project(container: bs4.BeautifulSoup) -> dict:
+    """
+
+    :param container:
+    :return:
+    """
+    name = container.find("a").text.strip()
+    link = extract_listing_link(container)
+    repos = get_early_archive_repos(link)
+    return {"name": name, "link": link, "repos": repos}
+
+
+def get_early_archive_year_projects(link: str) -> iter:
     """
 
     :param link:
@@ -105,18 +116,14 @@ def get_early_archive_projects(link: str) -> list:
     listing_page = requests.get(link)
     soup = bs4.BeautifulSoup(listing_page.text, features="html.parser")
     project_containers = get_early_archive_listing_links(soup)
-    projects = []
     for container in project_containers:
-        name = container.text.strip()
-        link = extract_listing_link(container)
-        repos = get_early_archive_repos(link)
-        print({"name": name, "link": link, "repos": repos})
-        projects.append({"name": name, "link": link, "repos": repos})
+        meta = get_early_archive_project(container)
+        print(meta)
+        yield meta
         time.sleep(SLEEP_INTERVAL)
-    return projects
 
 
-def get_projects_before_2016() -> list:
+def get_projects_before_2016() -> iter:
     """
 
     :return:
@@ -124,15 +131,14 @@ def get_projects_before_2016() -> list:
     listing_page = requests.get("https://www.google-melange.com/archive/gsoc")
     soup = bs4.BeautifulSoup(listing_page.text, features="html.parser")
     year_link_containers = get_early_archive_listing_links(soup)
-    projects = []
     for container in year_link_containers:
         year_link = extract_listing_link(container)
         if not year_link:
             continue
         print(f"Getting projects for {year_link}")
-        year_projects = get_early_archive_projects(year_link)
-        projects.extend(year_projects)
-    return projects
+        year_projects = get_early_archive_year_projects(year_link)
+        for project in year_projects:
+            yield project
 
 
 def get_projects_2016_onward() -> list:
@@ -149,7 +155,7 @@ def get_projects(output_file: str) -> None:
     :param output_file:
     :return:
     """
-    projects = get_projects_before_2016() + get_projects_2016_onward()
+    projects = chain(get_projects_before_2016(), get_projects_2016_onward())
     with open(output_file, mode="w") as out:
         for project in projects:
             out.write(json.dumps(project))
