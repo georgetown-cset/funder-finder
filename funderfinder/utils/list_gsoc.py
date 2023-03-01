@@ -160,7 +160,7 @@ def get_projects(output_file: str) -> None:
     projects = chain(get_projects_before_2016(), get_projects_2016_onward())
     with open(output_file, mode="w") as out:
         for project in projects:
-            out.write(json.dumps(project))
+            out.write(json.dumps(project) + "\n")
 
 
 if __name__ == "__main__":
