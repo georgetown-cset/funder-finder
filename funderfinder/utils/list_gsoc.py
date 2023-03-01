@@ -9,7 +9,7 @@ from itertools import chain
 import bs4
 import requests
 
-from .utils import GITHUB_ORG_PATTERN, GITHUB_REPO_PATTERN, SLEEP_INTERVAL
+from .utils import GITHUB_ORG_PATTERN, GITHUB_REPO_PATTERN, SCRAPE_DELAY
 
 """
 We will scrape Google Summer of Code's:
@@ -94,7 +94,7 @@ def get_early_archive_repos(link: str) -> list:
         student_page_links = get_link_matches(student_project_page.text)
         if student_page_links:
             repos.extend(student_page_links)
-        time.sleep(SLEEP_INTERVAL)
+        time.sleep(SCRAPE_DELAY)
     return list(set(repos))
 
 
@@ -124,12 +124,12 @@ def get_early_archive_year_projects(link: str) -> iter:
     for container in project_containers:
         meta = get_early_archive_project(container, year)
         yield meta
-        time.sleep(SLEEP_INTERVAL)
+        time.sleep(SCRAPE_DELAY)
 
 
 def get_projects_before_2016() -> iter:
     """
-    Retrieves projects from before 2016. GSOC uses an older website format for these
+    Retrieves project metadata from before 2016. GSOC uses an older website format for these
     :return: A generator of dicts containing project metadata
     """
     listing_page = requests.get("https://www.google-melange.com/archive/gsoc")
@@ -147,12 +147,12 @@ def get_projects_before_2016() -> iter:
 
 def get_modern_archive_project(year: int, slug: str) -> dict:
     """
-
-    :param year:
-    :param slug:
-    :return:
+    Retrieves project metadata for a project and year after 2016.
+    :param year: Year we want to retreive project metadata from
+    :param slug: The GSOC project slug, retrieved from their API
+    :return: Dict of project metadata
     """
-    time.sleep(SLEEP_INTERVAL)
+    time.sleep(SCRAPE_DELAY)
     project_url = f"https://summerofcode.withgoogle.com/api/archive/programs/{year}/organizations/{slug}/"
     meta = requests.get(project_url).json()
     repos = []
@@ -171,9 +171,10 @@ def get_modern_archive_project(year: int, slug: str) -> dict:
 
 def get_modern_archive_projects(year: int) -> tuple:
     """
-
-    :param year:
-    :return:
+    Retrieves project metadata for a year after 2016, if available
+    :param year: Year to retrieve project metadata from
+    :return: A tuple, with the first element a boolean which is True if we found project metadata for the year and
+    false otherwise (which it may be for the current year), and the second element an iterable of project metadata
     """
     org_url = f"https://summerofcode.withgoogle.com/api/archive/programs/{year}/organizations/"
     orgs = requests.get(org_url).json()
@@ -186,12 +187,12 @@ def get_modern_archive_projects(year: int) -> tuple:
 
 def get_curr_year_project(year: int, slug: str) -> dict:
     """
-
-    :param year:
-    :param slug:
-    :return:
+    Get project metadata for a project in the current year
+    :param year: The current year
+    :param slug: GSOC project slug
+    :return: Dict of project metadata
     """
-    time.sleep(SLEEP_INTERVAL)
+    time.sleep(SCRAPE_DELAY)
     project_url = f"https://summerofcode.withgoogle.com/api/organization/{slug}/"
     meta = requests.get(project_url).json()
     repos = []
@@ -209,14 +210,15 @@ def get_curr_year_project(year: int, slug: str) -> dict:
 
 def get_curr_year_projects(year: int) -> iter:
     """
-
-    :param year:
-    :return:
+    Get projects for the current year, if available
+    :param year: The current year
+    :return: An generator (possibly empty) of project metadata
     """
     org_url = f"https://summerofcode.withgoogle.com/api/program/{year}/organizations/"
     orgs = requests.get(org_url).json()
     if type(orgs) == list:
         return (get_curr_year_project(year, org["slug"]) for org in orgs)
+    return ()
 
 
 def get_projects_2016_onward() -> iter:

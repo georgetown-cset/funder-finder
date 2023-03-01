@@ -45,7 +45,7 @@ class GSOCFinder(Finder):
             return {
                 "contributions": [
                     {"date_contribution_made": f"{year}-05-01"}
-                    for year in years_matched
+                    for year in sorted(years_matched)
                 ]
             }
 
@@ -62,7 +62,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument(
         "--github_name",
-        help="Case-insensitive github owner and repo name, for example nipy/nibabel",
+        help="Case-insensitive github owner and repo name, for example enigma-dev/enigma-dev",
         required=True,
     )
     args = parser.parse_args()

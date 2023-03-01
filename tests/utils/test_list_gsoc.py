@@ -4,6 +4,7 @@ import bs4
 
 from funderfinder.utils.list_gsoc import (
     get_curr_year_project,
+    get_curr_year_projects,
     get_early_archive_project,
     get_link_matches,
     get_modern_archive_projects,
@@ -118,3 +119,6 @@ class TestListGSOC(unittest.TestCase):
             },
             get_curr_year_project(2023, "eclipse-foundation"),
         )
+
+    def test_get_curr_year_projects_empty(self):
+        self.assertEqual([], [p for p in get_curr_year_projects(3000)])
