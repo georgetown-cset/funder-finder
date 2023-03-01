@@ -2,7 +2,7 @@ import unittest
 
 import bs4
 
-from funderfinder.utils.list_gsoc import get_early_archive_project, get_link_match
+from funderfinder.utils.list_gsoc import get_early_archive_project, get_link_matches
 
 from ..context import funderfinder
 
@@ -10,14 +10,22 @@ from ..context import funderfinder
 class TestListGSOC(unittest.TestCase):
     def test_get_link_match_org(self):
         self.assertEqual(
-            "EOL",
-            get_link_match(
+            ["EOL"],
+            get_link_matches(
                 """<p>The Encyclopedia of Life (EOL) is a free, online
         collaborative encyclopedia intended to document all of the 1.9 million living speciesÂ known to science.
         It is compiled from existing databases and from contributions by experts and non-experts
         throughout the world.</p>
         <p>EOL developers are spread between United States, United Kingdom, Egypt and Philippines. Organization's
         code is located atÂ https://github.com/EOL</p>"""
+            ),
+        )
+
+    def test_get_link_match_repo(self):
+        self.assertEqual(
+            ["beamcommunity/beamcommunity.github.com"],
+            get_link_matches(
+                """https://github.com/beamcommunity/beamcommunity.github.com/wiki"""
             ),
         )
 
