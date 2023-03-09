@@ -34,6 +34,12 @@ export GITHUB_USERNAME=YOUR_GITHUB_USERNAME
 export GITHUB_TOKEN=YOUR_GITHUB_TOKEN
 ```
 
+Also add an [Open Collective API key](https://blog.opencollective.com/open-collective-graphql-api-preview/):
+
+```bash
+export OPENCOLLECTIVE_API_KEY=YOUR_OPENCOLLECTIVE_API_KEY
+```
+
 Change to `funderfinder` directory and run `get_funders.py` with the `--help` flag.
 
 ```bash
