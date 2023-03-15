@@ -88,16 +88,16 @@ class TestListGSOC(unittest.TestCase):
         fragment = """
         <span class="mdl-list__item-primary-content">
         <span class="small-logo-box mdl-list__item-icon">
-        <img alt="Mono Project logo" class="small-logo" src="/archive/gsoc/2015/orgs/mono/logo-30.png"/>
+        <img alt="Mono Project logo" class="small-logo" src="/archive/gsoc/2017/orgs/mono/logo-30.png"/>
         </span>
-        <a href="/archive/gsoc/2015/orgs/mono">Mono Project</a>
+        <a href="/archive/gsoc/2017/orgs/mono">Mono Project</a>
         </span>
         """
         soup = bs4.BeautifulSoup(fragment, features="html.parser")
         self.assertEqual(
             {
                 "name": "Mono Project",
-                "link": "https://www.google-melange.com/archive/gsoc/2015/orgs/mono",
+                "link": "https://www.google-melange.com/archive/gsoc/2017/orgs/mono",
                 "repos": ["ddobrev/QtSharp"],
                 "year": 2017,
             },
