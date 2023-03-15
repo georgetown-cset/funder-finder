@@ -105,9 +105,8 @@ class TestListGSOC(unittest.TestCase):
         )
 
     def test_get_modern_archive_projects_has_expected_size(self):
-        success, projects = get_modern_archive_projects(2016)
-        self.assertTrue(success)
-        self.assertEqual(178, len([p for p in projects]))
+        projects = get_modern_archive_projects(2016)
+        self.assertEqual(178, len(projects))
 
     def test_get_curr_year_project(self):
         self.assertEqual(
