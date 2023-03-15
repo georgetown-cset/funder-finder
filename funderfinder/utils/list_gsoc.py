@@ -106,7 +106,7 @@ def get_early_archive_project(container: bs4.BeautifulSoup, year: int) -> dict:
     """
     Get a pre-2016 project's metadata
     :param container: BeautifulSoup container containing the project's name and link to GSOC's detail page
-    :param year: Year the project appeared (a project may appear in more than one year)
+    :param year: Year of GSOC the project was retrieved from. A project may appear in more than one year.
     :return: Dict containing project's name, link to detail page, and any repos/orgs we found for the project
     """
     name = container.find("a").text.strip()
@@ -220,6 +220,7 @@ def get_curr_year_projects(year: int) -> iter:
     """
     org_url = f"https://summerofcode.withgoogle.com/api/program/{year}/organizations/"
     orgs = requests.get(org_url).json()
+    # If no data is available, the API returns a dict with a "type" key mapped to "object_not_found"
     if type(orgs) == list:
         return (get_curr_year_project(year, org["slug"]) for org in orgs)
     return ()
