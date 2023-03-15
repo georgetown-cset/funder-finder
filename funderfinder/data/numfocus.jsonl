@@ -99,7 +99,6 @@
 {"name": "TNL - Template Numerical Library", "slug": null, "github_name": null, "relationship": "affiliated"}
 {"name": "Taskflow", "slug": null, "github_name": "taskflow/taskflow", "relationship": "affiliated"}
 {"name": "The Ibis Project", "slug": null, "github_name": "ibis-project/ibis", "relationship": "affiliated"}
-{"name": "Theano", "slug": null, "github_name": "aesara-devs/aesara", "relationship": "affiliated"}
 {"name": "WESTPA", "slug": null, "github_name": "westpa/westpa", "relationship": "affiliated"}
 {"name": "Yellowbrick", "slug": null, "github_name": "DistrictDataLabs/yellowbrick", "relationship": "affiliated"}
 {"name": "bqplot", "slug": null, "github_name": "bqplot/bqplot", "relationship": "affiliated"}
