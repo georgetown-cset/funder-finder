@@ -8,6 +8,8 @@ import time
 import bs4
 import requests
 
+from .utils import GITHUB_REPO_PATTERN, SCRAPE_DELAY
+
 """
 We will scrape NumFOCUS's:
 
@@ -55,10 +57,8 @@ def get_github_link(project_name: str, text: str) -> str:
     """
     if project_name in GITHUB_OVERRIDES:
         return GITHUB_OVERRIDES[project_name]
-    match = re.search(
-        r"(?i)github.com/([A-Za-z0-9-_.]+/[A-Za-z0-9-_.]*[A-Za-z0-9-_])", text
-    )
-    return None if not match else match.group(1)
+    match = re.search(GITHUB_REPO_PATTERN, text)
+    return None if not match else match.group(2)
 
 
 def get_numfocus_slug(url: str) -> str:
@@ -120,8 +120,7 @@ def get_sponsored_projects() -> list:
                 "relationship": "sponsored",
             }
         )
-        # don't make requests any faster than every 2 seconds
-        time.sleep(2)
+        time.sleep(SCRAPE_DELAY)
     return projects
 
 
