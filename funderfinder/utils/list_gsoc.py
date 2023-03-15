@@ -1,16 +1,3 @@
-import argparse
-import json
-import os
-import re
-import time
-from datetime import datetime
-from itertools import chain
-
-import bs4
-import requests
-
-from .utils import GITHUB_ORG_PATTERN, GITHUB_REPO_PATTERN, SCRAPE_DELAY
-
 """
 We will scrape Google Summer of Code's:
 
@@ -24,6 +11,23 @@ For each project, we will affiliate the project with specific repos or entire or
   * The project page
   * The student project pages
 """
+
+import argparse
+import json
+import logging
+import os
+import re
+import time
+from datetime import datetime
+from itertools import chain
+
+import bs4
+import requests
+
+from .utils import GITHUB_ORG_PATTERN, GITHUB_REPO_PATTERN, SCRAPE_DELAY
+
+logging.basicConfig(level=logging.INFO)
+LOGGER = logging.getLogger("list_numfocus")
 
 
 def extract_listing_link(link_container: bs4.BeautifulSoup) -> str:
@@ -139,7 +143,7 @@ def get_projects_before_2016() -> iter:
         year_link = extract_listing_link(container)
         if not year_link:
             continue
-        print(f"Getting projects for {year_link}")
+        LOGGER.info(f"Getting projects for {year_link}")
         year_projects = get_early_archive_year_projects(year_link)
         for project in year_projects:
             yield project
@@ -228,7 +232,7 @@ def get_projects_2016_onward() -> iter:
     """
     curr_year = datetime.now().year
     for year in range(2016, curr_year + 1):
-        print(f"Getting projects for {year}")
+        LOGGER.info(f"Getting projects for {year}")
         success, projects = get_modern_archive_projects(year)
         if success:
             for project in projects:
