@@ -50,14 +50,14 @@ class TestListGSOC(unittest.TestCase):
         <span class="small-logo-box mdl-list__item-icon">
         <i class="material-icons small-logo">business</i>
         </span>
-        <a href="/archive/gsoc/2015/orgs/beamcommunity">BEAM Community</a>
+        <a href="/archive/gsoc/2016/orgs/beamcommunity">BEAM Community</a>
         </span>
                 """
         soup = bs4.BeautifulSoup(fragment, features="html.parser")
         self.assertEqual(
             {
                 "name": "BEAM Community",
-                "link": "https://www.google-melange.com/archive/gsoc/2015/orgs/beamcommunity",
+                "link": "https://www.google-melange.com/archive/gsoc/2016/orgs/beamcommunity",
                 "repos": ["beamcommunity/beamcommunity.github.com"],
                 "year": 2016,
             },
