@@ -36,7 +36,7 @@ class TestListGSOC(unittest.TestCase):
         )
 
     def test_get_link_match_gist(self):
-        # github gists should not match
+        # github gists should not match as we're only searching for standard github repositories
         self.assertEqual(
             [],
             get_link_matches(

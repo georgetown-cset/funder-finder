@@ -54,7 +54,8 @@ def get_early_archive_listing_links(soup: bs4.BeautifulSoup) -> list:
 
 def get_link_matches(text: str) -> list:
     """
-    Extract any github orgs (if not repo specified) or repos in text
+    Extract any github orgs (if not repo specified) or repos in text that are part of standard github
+    repostiories (i.e. not gists)
     :param text: Text that may contain github links
     :return: List of orgs and/or repos
     """
