@@ -156,7 +156,6 @@ def get_modern_archive_project(year: int, slug: str) -> dict:
     :param slug: The GSOC project slug, retrieved from their API
     :return: Dict of project metadata
     """
-    time.sleep(SCRAPE_DELAY)
     project_url = f"https://summerofcode.withgoogle.com/api/archive/programs/{year}/organizations/{slug}/"
     meta = requests.get(project_url).json()
     repos = []
@@ -165,6 +164,7 @@ def get_modern_archive_project(year: int, slug: str) -> dict:
     for student_project in meta["projects"]:
         repos.extend(get_link_matches(student_project["abstract_html"]))
         repos.extend(get_link_matches(student_project["project_code_url"]))
+    time.sleep(SCRAPE_DELAY)
     return {
         "name": meta["name"],
         "link": project_url,
@@ -196,7 +196,6 @@ def get_curr_year_project(year: int, slug: str) -> dict:
     :param slug: GSOC project slug
     :return: Dict of project metadata
     """
-    time.sleep(SCRAPE_DELAY)
     project_url = f"https://summerofcode.withgoogle.com/api/organization/{slug}/"
     meta = requests.get(project_url).json()
     repos = []
@@ -204,6 +203,7 @@ def get_curr_year_project(year: int, slug: str) -> dict:
     repos.extend(get_link_matches(meta["ideas_link"]))
     repos.extend(get_link_matches(meta["source_code"]))
     repos.extend(get_link_matches(meta["website_url"]))
+    time.sleep(SCRAPE_DELAY)
     return {
         "name": meta["name"],
         "link": project_url,
