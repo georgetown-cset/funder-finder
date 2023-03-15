@@ -25,5 +25,7 @@
   "Spack": "spack/spack",
   "Theano": "aesara-devs/aesara",
   "Dask": "dask/dask",
-  "FluxML": "FluxML/Flux.jl"
+  "FluxML": "FluxML/Flux.jl",
+  "Aesara": "aesara-devs/aesara",
+  "SkyPy": "skypyproject/skypy"
 }

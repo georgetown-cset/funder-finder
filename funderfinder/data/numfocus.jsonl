@@ -53,7 +53,7 @@
 {"name": "sgkit", "slug": "sgkit", "github_name": "pystatgen/sgkit", "relationship": "sponsored"}
 {"name": "xarray", "slug": "xarray", "github_name": "pydata/xarray", "relationship": "sponsored"}
 {"name": "yt", "slug": "yt", "github_name": "yt-project/yt", "relationship": "sponsored"}
-{"name": "Aesara", "slug": null, "github_name": "orgs/aesara-devs", "relationship": "affiliated"}
+{"name": "Aesara", "slug": null, "github_name": "aesara-devs/aesara", "relationship": "affiliated"}
 {"name": "AiiDA", "slug": null, "github_name": "aiidateam/aiida-core", "relationship": "affiliated"}
 {"name": "Asteroid", "slug": null, "github_name": "asteroid-team/asteroid", "relationship": "affiliated"}
 {"name": "CB-Geo MPM", "slug": null, "github_name": "cb-geo/mpm", "relationship": "affiliated"}
@@ -92,7 +92,7 @@
 {"name": "Python(X,Y)", "slug": null, "github_name": null, "relationship": "affiliated"}
 {"name": "QuTiP", "slug": null, "github_name": "qutip/qutip", "relationship": "affiliated"}
 {"name": "Radis", "slug": null, "github_name": "radis/radis", "relationship": "affiliated"}
-{"name": "SkyPy", "slug": null, "github_name": null, "relationship": "affiliated"}
+{"name": "SkyPy", "slug": null, "github_name": "skypyproject/skypy", "relationship": "affiliated"}
 {"name": "Solcore", "slug": null, "github_name": "qpv-research-group/solcore5", "relationship": "affiliated"}
 {"name": "Spack", "slug": null, "github_name": "spack/spack", "relationship": "affiliated"}
 {"name": "Statsmodels", "slug": null, "github_name": "statsmodels/statsmodels", "relationship": "affiliated"}
