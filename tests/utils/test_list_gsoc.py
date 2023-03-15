@@ -50,18 +50,18 @@ class TestListGSOC(unittest.TestCase):
         <span class="small-logo-box mdl-list__item-icon">
         <i class="material-icons small-logo">business</i>
         </span>
-        <a href="/archive/gsoc/2016/orgs/beamcommunity">BEAM Community</a>
+        <a href="/archive/gsoc/2015/orgs/beamcommunity">BEAM Community</a>
         </span>
                 """
         soup = bs4.BeautifulSoup(fragment, features="html.parser")
         self.assertEqual(
             {
                 "name": "BEAM Community",
-                "link": "https://www.google-melange.com/archive/gsoc/2016/orgs/beamcommunity",
+                "link": "https://www.google-melange.com/archive/gsoc/2015/orgs/beamcommunity",
                 "repos": ["beamcommunity/beamcommunity.github.com"],
-                "year": 2016,
+                "year": 2015,
             },
-            get_early_archive_project(soup, 2016),
+            get_early_archive_project(soup, 2015),
         )
 
     def test_get_early_archive_project_body_link(self):
@@ -88,20 +88,20 @@ class TestListGSOC(unittest.TestCase):
         fragment = """
         <span class="mdl-list__item-primary-content">
         <span class="small-logo-box mdl-list__item-icon">
-        <img alt="Mono Project logo" class="small-logo" src="/archive/gsoc/2017/orgs/mono/logo-30.png"/>
+        <img alt="Mono Project logo" class="small-logo" src="/archive/gsoc/2015/orgs/mono/logo-30.png"/>
         </span>
-        <a href="/archive/gsoc/2017/orgs/mono">Mono Project</a>
+        <a href="/archive/gsoc/2015/orgs/mono">Mono Project</a>
         </span>
         """
         soup = bs4.BeautifulSoup(fragment, features="html.parser")
         self.assertEqual(
             {
                 "name": "Mono Project",
-                "link": "https://www.google-melange.com/archive/gsoc/2017/orgs/mono",
+                "link": "https://www.google-melange.com/archive/gsoc/2015/orgs/mono",
                 "repos": ["ddobrev/QtSharp"],
-                "year": 2017,
+                "year": 2015,
             },
-            get_early_archive_project(soup, 2017),
+            get_early_archive_project(soup, 2015),
         )
 
     def test_get_modern_archive_projects_has_expected_size(self):

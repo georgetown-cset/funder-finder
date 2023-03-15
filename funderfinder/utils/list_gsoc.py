@@ -174,20 +174,18 @@ def get_modern_archive_project(year: int, slug: str) -> dict:
     }
 
 
-def get_modern_archive_projects(year: int) -> tuple:
+def get_modern_archive_projects(year: int) -> iter:
     """
     Retrieves project metadata for a year after 2016, if available
     :param year: Year to retrieve project metadata from
-    :return: A tuple, with the first element a boolean which is True if we found project metadata for the year and
-    false otherwise (which it may be for the current year), and the second element an iterable of project metadata
+    :return: An iterable of project metadata, empty if no data was found
     """
     org_url = f"https://summerofcode.withgoogle.com/api/archive/programs/{year}/organizations/"
     orgs = requests.get(org_url).json()
-    is_ok = (type(orgs) == list) and (len(orgs) > 0)
-    if not is_ok:
-        return False, []
-    meta = (get_modern_archive_project(year, org["slug"]) for org in orgs)
-    return True, meta
+    if (type(orgs) != list) or not orgs:
+        return []
+    meta = [get_modern_archive_project(year, org["slug"]) for org in orgs]
+    return meta
 
 
 def get_curr_year_project(year: int, slug: str) -> dict:
@@ -235,8 +233,8 @@ def get_projects_2016_onward() -> iter:
     curr_year = datetime.now().year
     for year in range(2016, curr_year + 1):
         LOGGER.info(f"Getting projects for {year}")
-        success, projects = get_modern_archive_projects(year)
-        if success:
+        projects = get_modern_archive_projects(year)
+        if projects:
             for project in projects:
                 yield project
         # If there isn't an archive page for the current year, we may still have active projects with some
