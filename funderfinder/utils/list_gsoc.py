@@ -148,7 +148,7 @@ def get_projects_before_2016() -> iter:
 def get_modern_archive_project(year: int, slug: str) -> dict:
     """
     Retrieves project metadata for a project and year after 2016.
-    :param year: Year we want to retreive project metadata from
+    :param year: Year we want to retrieve project metadata from
     :param slug: The GSOC project slug, retrieved from their API
     :return: Dict of project metadata
     """
