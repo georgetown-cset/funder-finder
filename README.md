@@ -7,6 +7,7 @@ funding sources we support include:
 - [Github Sponsors](funderfinder/sources/github_sponsors.py)
 - [NumFOCUS](funderfinder/sources/numfocus.py)
 - [Tidelift](funderfinder/sources/tidelift.py)
+- [Google Summer of Code](fundefinder/sources/gsoc.py)
 
 We also have some general-purpose [utilities](funderfinder/utils).
 
@@ -50,7 +51,7 @@ python get_funders.py --help
 An example usage is:
 
 ```bash
-python3 funderfinder/get_funders.py repo_name=georgetown-cset/funder-finder
+python3 funderfinder/get_funders.py georgetown-cset/funder-finder
 ```
 
 ## How to contribute
