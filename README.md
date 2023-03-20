@@ -1,3 +1,5 @@
+![Build Status](https://github.com/georgetown-cset/funder-finder/actions/workflows/main.yml/badge.svg)
+
 # Funder Finder
 
 This project allows you to retrieve funding information for a GitHub repository of interest to you. Current
