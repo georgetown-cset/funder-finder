@@ -88,6 +88,8 @@ class GitHubSponsorsFinder(Finder):
 
         if response.ok:
             contributors = json.loads(response.text or response.content)
+        else:
+            return []
 
         top_contribs = []
         for contributor in contributors:
@@ -167,7 +169,7 @@ class GitHubSponsorsFinder(Finder):
         sources = []
         org = self.get_owner_name(gh_project_slug)
         num_org_funders = self.get_org_funder_count(org)
-        if org:
+        if num_org_funders:
             sources.append(
                 {"funding_type": "organizational", "num_contributors": num_org_funders}
             )

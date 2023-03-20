@@ -20,14 +20,15 @@ class TideliftFinder(Finder):
         # try most likely README names
         readme_names = ["README.md", "readme.md", "README.rst", "readme.rst"]
         for name in readme_names:
-            r = requests.get(
-                f"https://raw.githubusercontent.com/{params['owner']}/{params['repo']}/main/{name}"
-            )
-            if r.status_code != 200:
-                continue
-            if "tidelift" in r.text:
-                params["is_funded"] = True
-                break
+            for branch in ["main", "master"]:
+                r = requests.get(
+                    f"https://raw.githubusercontent.com/{params['owner']}/{params['repo']}/{branch}/{name}"
+                )
+                if r.status_code != 200:
+                    continue
+                if "tidelift" in r.text.lower():
+                    params["is_funded"] = True
+                    break
 
         return params
 
@@ -39,7 +40,7 @@ class TideliftFinder(Finder):
                 "is_funded": False,
             }
         )
-        return [stats] if stats else []
+        return [stats] if stats["is_funded"] else []
 
 
 if __name__ == "__main__":

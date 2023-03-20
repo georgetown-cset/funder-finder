@@ -23,8 +23,8 @@ class TestTidelift(unittest.TestCase):
         finder = TideliftFinder
         stats = finder.get_funding_stats(
             {
-                "owner": finder.get_owner_name("georgetown-cset/funder-finder"),
-                "repo": finder.get_repo_name("georgetown-cset/funder-finder"),
+                "owner": finder.get_owner_name("georgetown-cset/article-linking"),
+                "repo": finder.get_repo_name("georgetown-cset/article-linking"),
                 "is_funded": False,
             }
         )
