@@ -30,7 +30,7 @@ Install the dependencies:
 pip install -r requirements.txt
 ```
 
-Add a GitHub username and a [GitHub API token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) as environment variables. For the API token, make sure to enable these scopes: `admin:org`, `read:user`, `repo`, `user:email`, and`workflow`.
+Add a GitHub username and a [GitHub API token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) as environment variables. For the API token, make sure to enable these scopes: `admin:org`, `read:user`, `repo`, `user:email`, and `workflow`.
 
 ```bash
 export GITHUB_USERNAME=YOUR_GITHUB_USERNAME
