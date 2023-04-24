@@ -1,3 +1,4 @@
+"""Retrieve funding stats related to Tidelift funding."""
 import argparse
 from typing import Union
 
@@ -18,7 +19,14 @@ class TideliftFinder(Finder):
         :return: dict
         """
         # try most likely README names
-        readme_names = ["README.md", "readme.md", "README.rst", "readme.rst"]
+        readme_names = [
+            "README.md",
+            "Readme.md",
+            "readme.md",
+            "README.rst",
+            "Readme.rst",
+            "readme.rst",
+        ]
         for name in readme_names:
             for branch in ["main", "master"]:
                 r = requests.get(

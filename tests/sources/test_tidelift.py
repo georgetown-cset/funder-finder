@@ -18,6 +18,14 @@ class TestTidelift(unittest.TestCase):
             }
         )
         self.assertTrue(stats["is_funded"])
+        stats = finder.get_funding_stats(
+            {
+                "owner": finder.get_owner_name("tj/commander.js"),
+                "repo": finder.get_repo_name("tj/commander.js"),
+                "is_funded": False,
+            }
+        )
+        self.assertTrue(stats["is_funded"])
 
     def test_get_funding_stats_is_not_funded(self):
         finder = TideliftFinder
