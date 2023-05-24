@@ -171,8 +171,9 @@ class GitHubSponsorsFinder(Finder):
         self, repo: str, num_org_funders: int, top_contribs: list
     ) -> bool:
         """
-        Retrieves funding sources listed under "sponsor this project", and filters to those
-        that are (a) github sponsors and (b) have not already been retrieved
+        Checks links listed under "sponsor this project", and filters to those
+        that are (a) github sponsor links and (b) are not organizational or user pages we've already detected.
+        Returns True if any such sponsor links are present.
         :param repo: GitHub repo slug
         :param num_org_funders: Number of organizational funders this project has
         :param top_contribs: List of top contributors
