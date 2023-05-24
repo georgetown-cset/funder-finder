@@ -5,6 +5,8 @@ from typing import Any, Union
 
 import requests
 
+from funderfinder.utils.github_sources import get_funding_sources
+
 from ._finder import Finder
 
 
@@ -51,7 +53,7 @@ class GitHubSponsorsFinder(Finder):
         data = result.json()
         return data
 
-    def get_org_funder_count(self, org: str) -> dict:
+    def get_org_funder_count(self, org: str) -> int:
         """
         Retrieves GitHub sponsors statistics for a GitHub organization.
         :param org: identifier for the GitHub organization
@@ -165,6 +167,29 @@ class GitHubSponsorsFinder(Finder):
             num_sponsors = self.parse_gh_user_gh_sponsors_json(sponsors_json)
             print(f"Top contributor {contrib} has {num_sponsors} sponsors")
 
+    def has_sponsor_this_project(
+        self, repo: str, num_org_funders: int, top_contribs: list
+    ) -> bool:
+        """
+        Retrieves funding sources listed under "sponsor this project", and filters to those
+        that are (a) github sponsors and (b) have not already been retrieved
+        :param repo: GitHub repo slug
+        :param num_org_funders: Number of organizational funders this project has
+        :param top_contribs: List of top contributors
+        :return: True if has other "sponsor this project" sponsors, False otherwise
+        """
+        sources = get_funding_sources(repo)
+        for source in sources:
+            if "github.com" not in source:
+                continue
+            # Given a sponsor page link like https://github.com/sponsors/babel, get "babel"
+            sponsored_entity = source.strip("/").split("/")[-1]
+            if (sponsored_entity == self.get_owner_name(repo)) and num_org_funders:
+                # then we're already counting this under organizational sponsors and we can skip it
+                continue
+            # If the sponsored entity is one of the top contributors, then we're already counting them and can skip
+            return sponsored_entity not in top_contribs
+
     def run(self, gh_project_slug: Union[str, None] = None) -> list:
         sources = []
         org = self.get_owner_name(gh_project_slug)
@@ -183,6 +208,11 @@ class GitHubSponsorsFinder(Finder):
         if has_contributor_sponsors:
             # num_contributors is tricky to include here because we would have to deduplicate across users
             sources.append({"funding_type": "individual"})
+        is_sponsor_this_project = self.has_sponsor_this_project(
+            gh_project_slug, num_org_funders, sources
+        )
+        if is_sponsor_this_project:
+            sources.append({"funding_type": "sponsor_this_project"})
         return sources
 
 

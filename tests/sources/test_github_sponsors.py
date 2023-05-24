@@ -37,3 +37,14 @@ class TestGithubSponsors(unittest.TestCase):
 
         got = self.finder.parse_gh_user_gh_sponsors_json(test_json)
         self.assertEqual(got, 15)
+
+    def test_flux_has_sponsor_this_project(self):
+        self.assertTrue(self.finder.has_sponsor_this_project("FluxML/Flux.jl", 0, []))
+
+    def test_babel_has_no_sponsor_this_project(self):
+        self.assertFalse(self.finder.has_sponsor_this_project("babel/babel", 1, []))
+
+    def test_funder_finder_has_no_sponsor_this_project(self):
+        self.assertFalse(
+            self.finder.has_sponsor_this_project("georgetown-cset/funder-finder", 0, [])
+        )
