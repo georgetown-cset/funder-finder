@@ -181,7 +181,8 @@ class GitHubSponsorsFinder(Finder):
         """
         sources = get_funding_sources(repo)
         for source in sources:
-            if "github.com" not in source:
+            # Check whether we're looking at a github sponsors link
+            if "github.com/sponsors" not in source:
                 continue
             # Given a sponsor page link like https://github.com/sponsors/babel, get "babel"
             sponsored_entity = source.strip("/").split("/")[-1]
