@@ -57,7 +57,7 @@ class GitHubSponsorsFinder(Finder):
         """
         Retrieves GitHub sponsors statistics for a GitHub organization.
         :param org: identifier for the GitHub organization
-        :return: Dict of funding stats
+        :return: Count of funding stats
         """
         stats = self.get_gh_org_funding_json(org)
         count = (

@@ -39,9 +39,13 @@ class TestGithubSponsors(unittest.TestCase):
         self.assertEqual(got, 15)
 
     def test_flux_has_sponsor_this_project(self):
+        # This test may fail in the future if Flux GitHub Sponsors get referenced in the Readme, or if
+        # sponsors are removed from the "Sponsor this project" list
         self.assertTrue(self.finder.has_sponsor_this_project("FluxML/Flux.jl", 0, []))
 
     def test_babel_has_no_sponsor_this_project(self):
+        # This test may fail in the future if new Babel GitHub Sponsors are added to the "Sponsor this project"
+        # list, or existing GitHub Sponsors are removed from the readme but left in the "Sponsor this project" list
         self.assertFalse(self.finder.has_sponsor_this_project("babel/babel", 1, []))
 
     def test_funder_finder_has_no_sponsor_this_project(self):
