@@ -9,7 +9,7 @@ from ..context import funderfinder
 
 class TestTidelift(unittest.TestCase):
     def test_get_funding_stats_is_funded(self):
-        finder = TideliftFinder
+        finder = TideliftFinder()
         stats = finder.get_funding_stats(
             {
                 "owner": finder.get_owner_name("pypa/setuptools"),
@@ -28,7 +28,7 @@ class TestTidelift(unittest.TestCase):
         self.assertTrue(stats["is_funded"])
 
     def test_get_funding_stats_is_not_funded(self):
-        finder = TideliftFinder
+        finder = TideliftFinder()
         stats = finder.get_funding_stats(
             {
                 "owner": finder.get_owner_name("georgetown-cset/article-linking"),
