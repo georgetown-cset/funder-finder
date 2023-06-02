@@ -53,7 +53,7 @@ python get_funders.py --help
 An example usage is:
 
 ```bash
-python3 funderfinder/get_funders.py georgetown-cset/funder-finder
+PYTHONPATH='.' python3 funderfinder/get_funders.py georgetown-cset/funder-finder
 ```
 
 ## How to contribute
