@@ -72,10 +72,10 @@ You can run the unit tests by running `pytest` from the root of the project dire
 To work on this or to understand this you need to have the knowledge of python and its libraries along GraphQL
 Funder & Finder
 This initiative enables you to obtain financial details for a GitHub repository that captures your interest. The existing channels we facilitate include:
-•	Open Collective
-•	Github Sponsors
-•	NumFOCUS
-•	Tidelift
+- •	Open Collective
+- •	Github Sponsors
+- •	NumFOCUS
+- •	Tidelift
 Furthermore, we offer versatile tools for various purposes.
 Refer to our issue list for upcoming funding sources we intend to incorporate.
 
