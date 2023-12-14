@@ -19,7 +19,7 @@ class NumFocusFinder(Finder):
     name = "NumFOCUS"
 
     @staticmethod
-    def get_funding_stats(search_params: dict) -> Union[dict, None]:
+    def get_funding_stats(search_params: dict, dates: list = None) -> Union[dict, None]:
         """
         Determines whether a project is sponsored or affiliated with NumFOCUS based on our scraped dataset and
         a project name, slug, or github owner and repo name
@@ -53,13 +53,14 @@ class NumFocusFinder(Finder):
                 "is_funded": True,
             }
 
-    def run(self, gh_project_slug: Union[str, None] = None) -> list:
+    def run(self, gh_project_slug: Union[str, None] = None, dates: list = None) -> list:
         stats = self.get_funding_stats(
             {
                 "name": None,
                 "slug": self.get_repo_name(gh_project_slug),
                 "github_name": gh_project_slug,
-            }
+            },
+            dates,
         )
         return [stats] if stats else []
 
