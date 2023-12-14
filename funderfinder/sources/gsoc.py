@@ -18,7 +18,9 @@ updated on a weekly basis via a Github Action (.github/workflows/update_datasets
 class GSOCFinder(Finder):
     name = "Google Summer of Code"
 
-    def get_funding_stats(self, search_params: dict) -> Union[dict, None]:
+    def get_funding_stats(
+        self, search_params: dict, dates: list = None
+    ) -> Union[dict, None]:
         """
         Determines whether a project is sponsored or affiliated with GSOC based on our scraped dataset and
         a project owner or slug (owner/repo)
@@ -49,11 +51,12 @@ class GSOCFinder(Finder):
                 ]
             }
 
-    def run(self, gh_project_slug: Union[str, None] = None) -> list:
+    def run(self, gh_project_slug: Union[str, None] = None, dates: list = None) -> list:
         stats = self.get_funding_stats(
             {
                 "slug": self.get_repo_name(gh_project_slug),
-            }
+            },
+            dates,
         )
         return [stats] if stats else []
 

@@ -28,32 +28,106 @@ class OpenCollectiveFinder(Finder):
         :param project_slug: identifier for the project (like 'babel' in 'https://opencollective.com/babel')
         :return: Dict of funding stats
         """
-        query = """
-          query ($slug: String) {
-            collective (slug: $slug) {
-              totalFinancialContributors
-              stats {
-                totalAmountReceived {
-                  currency
-                  value
-                }
-              }
-            }
-          }
-        """
-        variables = {"slug": project_slug}
+        # query = """
+        #   query ($slug: String) {
+        #     collective (slug: $slug) {
+        #       totalFinancialContributors
+        #       stats {
+        #         totalAmountReceived {
+        #           currency
+        #           value
+        #         }
+        #       }
+        #     }
+        #   }
+        # """
+        result_arr = []
+        dates = [
+            ("2018-01-01T00:00:00Z", "2018-07-01T00:00:00Z"),
+            ("2018-07-01T00:00:00Z", "2019-01-01T00:00:00Z"),
+            ("2019-01-01T00:00:00Z", "2019-07-01T00:00:00Z"),
+            ("2019-07-01T00:00:00Z", "2020-01-01T00:00:00Z"),
+            ("2020-01-01T00:00:00Z", "2020-07-01T00:00:00Z"),
+            ("2020-07-01T00:00:00Z", "2021-01-01T00:00:00Z"),
+            ("2021-01-01T00:00:00Z", "2021-07-01T00:00:00Z"),
+            ("2021-07-01T00:00:00Z", "2022-01-01T00:00:00Z"),
+            ("2022-01-01T00:00:00Z", "2022-07-01T00:00:00Z"),
+            ("2022-07-01T00:00:00Z", "2023-01-01T00:00:00Z"),
+            ("2023-01-01T00:00:00Z", "2023-07-01T00:00:00Z"),
+            ("2023-07-01T00:00:00Z", "2024-01-01T00:00:00Z"),
+        ]
+        # dates=[
+        # ("2015-01-01T00:00:00Z", "2015-07-01T00:00:00Z"),
+        # ("2015-07-01T00:00:00Z", "2016-01-01T00:00:00Z"),
+        # ("2016-01-01T00:00:00Z", "2016-07-01T00:00:00Z"),
+        # ("2016-07-01T00:00:00Z", "2017-01-01T00:00:00Z"),
+        # ("2017-01-01T00:00:00Z", "2017-07-01T00:00:00Z"),
+        # ("2017-07-01T00:00:00Z", "2018-01-01T00:00:00Z"),
+        # ("2018-01-01T00:00:00Z", "2018-07-01T00:00:00Z"),
+        # ("2018-07-01T00:00:00Z", "2019-01-01T00:00:00Z"),
+        # ("2019-01-01T00:00:00Z", "2019-07-01T00:00:00Z"),
+        # ("2019-07-01T00:00:00Z", "2020-01-01T00:00:00Z")
+        # ]
 
-        result = requests.post(
-            f"https://api.opencollective.com/graphql/v2/{self.api_key}",
-            json={"query": query, "variables": variables},
-        )
-        data = result.json()
-        stats = data["data"]["collective"]
-        if stats:
-            return {
-                "num_contributors": stats["totalFinancialContributors"],
-                "total_funding_usd": stats["stats"]["totalAmountReceived"]["value"],
-            }
+        # dates=[
+        # ("2020-01-01T00:00:00Z",  "2024-01-01T00:00:00Z")]
+        # query= """
+        # query ($slug: String) {
+        #     collective (slug: $slug) {
+        #     totalFinancialContributors
+        #       stats {
+        #         totalAmountReceived(
+        #           dateFrom: "2020-01-01T00:00:00Z"
+        #           dateTo: "2024-01-01T00:00:00Z"
+        #         ) {
+        #           currency
+        #           value
+        #         }
+        #       }
+        #     }
+        #   }"""
+        for date_range in dates:
+            query = f"""
+            query ($slug: String) {{
+                collective (slug: $slug) {{
+                    totalFinancialContributors
+                    stats {{
+                        totalAmountReceived(
+                            dateFrom: "{date_range[0]}"
+                            dateTo: "{date_range[1]}"
+                        ) {{
+                            currency
+                            value
+                        }}
+                    }}
+                }}
+            }}
+            """
+            # print(query)
+            variables = {"slug": project_slug}
+
+            result = requests.post(
+                f"https://api.opencollective.com/graphql/v2/{self.api_key}",
+                json={"query": query, "variables": variables},
+            )
+            data = result.json()
+            # print(data)
+            stats = data["data"]["collective"]
+            # print("--------")
+            # print("Stats",stats)
+            if stats:
+                result_arr.append(
+                    {
+                        "num_contributors": stats["totalFinancialContributors"],
+                        "Amount_of_funding_usd": stats["stats"]["totalAmountReceived"][
+                            "value"
+                        ],
+                        "datesFrom": date_range[0],
+                        "datesTo": date_range[1],
+                    }
+                )
+        print("result_arr", result_arr)
+        return result_arr
 
     def run(self, gh_project_slug: Union[str, None] = None) -> list:
         stats = self.get_funding_stats(self.get_repo_name(gh_project_slug))

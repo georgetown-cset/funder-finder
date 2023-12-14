@@ -4,8 +4,7 @@ import os
 from typing import Any, Union
 
 import requests
-
-from funderfinder.utils.github_sources import get_funding_sources
+from utils.github_sources import get_funding_sources
 
 from ._finder import Finder
 

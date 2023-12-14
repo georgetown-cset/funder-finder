@@ -4,7 +4,8 @@ from typing import Union
 
 import requests
 
-from funderfinder.utils.github_sources import get_funding_sources
+# from funderfinder.utils.github_sources import get_funding_sources
+from utils.github_sources import get_funding_sources
 
 from ._finder import Finder
 
@@ -21,7 +22,7 @@ class TideliftFinder(Finder):
         """
         return "tidelift" in text.lower()
 
-    def get_funding_stats(self, params: dict) -> dict:
+    def get_funding_stats(self, params: dict, dates: list = None) -> dict:
         """
         Retrieve tidelift funding. Check README for tidelift
         e.g. https://github.com/georgetown-cset/funder-finder -> georgetown-cset/funder-finder
@@ -52,13 +53,14 @@ class TideliftFinder(Finder):
             params["is_funded"] |= self.is_funded(link)
         return params
 
-    def run(self, gh_project_slug: Union[str, None] = None) -> list:
+    def run(self, gh_project_slug: Union[str, None] = None, dates: list = None) -> list:
         stats = self.get_funding_stats(
             {
                 "owner": self.get_owner_name(gh_project_slug),
                 "repo": self.get_repo_name(gh_project_slug),
                 "is_funded": False,
-            }
+            },
+            dates,
         )
         return [stats] if stats["is_funded"] else []
 
