@@ -76,6 +76,8 @@ This initiative enables you to obtain financial details for a GitHub repository 
 - Github Sponsors
 - NumFOCUS
 - Tidelift
+
+
 Furthermore, we offer versatile tools for various purposes.
 Refer to our issue list for upcoming funding sources we intend to incorporate.
 
